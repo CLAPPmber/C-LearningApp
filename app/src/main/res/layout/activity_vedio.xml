@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/loginbg3">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+          <android.support.v7.widget.Toolbar
+              android:id="@+id/toolbarvedio"
+              android:layout_height="40dp"
+              android:layout_width="match_parent"
+              android:background="?attr/colorPrimary"
+              android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+              app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+              app:layout_scrollFlags="scroll|enterAlways|snap"/>
+      </android.support.design.widget.AppBarLayout>
+        <ExpandableListView
+        android:id="@+id/elistview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#00000000"
+        android:childDivider="#3FE2C1"
+        android:indicatorLeft="15dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
+
+
+
+
+

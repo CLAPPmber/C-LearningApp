@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.bignerdranch.android.CLearning">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/appinc"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.bignerdranch.android.CLearning.MainActivity">
+        </activity>
+        <activity android:name="com.bignerdranch.android.CLearning.MainLayout">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bignerdranch.android.CLearning.PracticeActivity"
+            android:label="教材同步试题">
+        </activity>
+        <activity
+            android:name="com.bignerdranch.android.CLearning.BookActivity"
+            android:label="相关书籍">
+        </activity>
+        <activity
+            android:name="com.bignerdranch.android.CLearning.vedio"
+            android:label="视频列表">
+        </activity>
+        <activity android:name="com.bignerdranch.android.CLearning.TestActivity">
+        </activity>
+        <activity android:name="com.test.file.BookDetail">
+        </activity>
+        <activity
+            android:name="com.test.file.BookDirectory"
+            android:hardwareAccelerated="false">
+        </activity>
+        <activity android:name="com.test.file.PdfBook">
+        </activity>
+        <activity android:name="com.bignerdranch.android.CLearning.vedio_card">
+        </activity>
+        <activity android:name="com.bignerdranch.android.CLearning.VedioList">
+        </activity>
+    </application>
+</manifest>
