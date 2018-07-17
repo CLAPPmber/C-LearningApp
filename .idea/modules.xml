@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CLearning.iml" filepath="$PROJECT_DIR$/CLearning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/C-LearningApp.iml" filepath="$PROJECT_DIR$/C-LearningApp.iml" />
+      <module fileurl="file://E:\Android Studio\program\C-LearningApp\CLearning.iml" filepath="E:\Android Studio\program\C-LearningApp\CLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library1/library1.iml" filepath="$PROJECT_DIR$/library1/library1.iml" />
     </modules>
