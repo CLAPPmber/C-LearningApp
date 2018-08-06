@@ -1,0 +1,41 @@
+第三章:函数
+1．以下正确的函数原型为（    ）。
+（A）fun1( int x; int y ); （B）void fun1( x, y );
+（C）void fun1( int x, y );（D）void fun1( int, int );
+答案:D
+解析:由于A没有返回类型,B中函数变量x和y的类型不明确,C中y的类型不明确,因此答案ABC错误.
+
+2.有函数原型  void fun6( int );  在下列选项中，不正确的调用是（    ）。
+（A）int a = 21;  fun6( a );	（B）int a = 15;  fun6( a*3 ); 
+（C）int b = 100; fun6( &b );	（D）fun6( 256 );
+答案:C
+解析:该fun6函数要求传递的是int的参数,C中传去的是地址,因此错误.
+
+3.在C++中，一个项目可以包含多个函数，它们之间是（    ）。
+（A）独立定义的			（B）嵌套定义的
+（C）根据调用关系定义的		（D）根据调用顺序定义的
+答案:A
+解析:无.
+
+4.有以下函数定义，该函数的类型是（    ）。
+double fun11 (int ary[], int len)
+{ /*…*/ }
+（A）double fun11 (int ary[], int len)	（B）double fun11 (int [], int)
+（C）double (int[], int)		（D）double
+答案:C
+解析:无.
+
+5.指定内联函数的关键字是（    ）。
+（A）include	（B）inline	（C）namespace	（D）typedef
+答案:B
+解析:inline是C++中内联函数的关键字.
+
+6.自动存储变量是指（    ）。
+（A）自动指定存储地址的变量
+（B）自动更新数据的变量
+（C）在程序块执行时生成，块结束时释放的变量
+（D）在项目执行时生成，项目结束时释放的变量
+答案:C
+解析:无.
+
+

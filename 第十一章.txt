@@ -1,0 +1,32 @@
+第十一章:输入流/输出流
+1．在下列流类中，可以用于处理输入/输出的是（    ）。
+（A）ios   （B）iostream  （C）strstream （D）fstream 
+答案:B
+解析:无.
+
+2.在下列选项中，（    ）是istream类的对象。
+（A）cerr   (B）cin	  （C）clog	 （D）cout
+答案:B
+解析:无.
+
+3.下列选项中，不可以作为输出流对象的是（    ）。
+（A）文件			（B）内存		（C）键盘		（D）显示器
+答案:C
+解析:无.
+
+4.在下列选项中，用于处理字符串流的是（    ）。
+（A）strstream		（B）ios			（C）fstream		（D）iostream
+答案:A
+解析:无.
+
+5.能够从输入流中提取指定长度的字节序列的函数是（    ）。
+（A）get			（B）getline		（C）read			（D）cin
+答案:C
+解析:无.
+
+6.要进行文件的输出，除了包含头文件iostream外，还要包含头文件（    ）。
+（A）ifstream		（B）fstream		（C）ostream		（D）cstdio
+答案:B
+解析:无.
+
+
