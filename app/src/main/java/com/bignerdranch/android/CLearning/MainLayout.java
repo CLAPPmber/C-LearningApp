@@ -1,19 +1,44 @@
 package com.bignerdranch.android.CLearning;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.*;
+
+import com.HttpTool.FeedBack;
+import com.HttpTool.HttpUtil;
+import com.HttpTool.User;
+import com.Type.Cluser;
+import com.Type.VedioCard;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOError;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import Database.DBUtil;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainLayout extends AppCompatActivity{
 
@@ -25,7 +50,21 @@ public class MainLayout extends AppCompatActivity{
     private ImageButton vedio_button;
     private ImageButton practice_button;
     private ImageButton user_button;
-
+    private Cluser cluser;
+    private String responseData;
+                public static final int UPDATE_TEXT = 1;
+                private Handler handler = new Handler(){
+                    public void handleMessage(Message msg){
+                        switch(msg.what){
+                case UPDATE_TEXT:
+                    Getcardata(msg.obj.toString());
+                    Toast.makeText(MainLayout.this, cluser.getAccount()+cluser.getPassword(), Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
@@ -40,8 +79,6 @@ public class MainLayout extends AppCompatActivity{
         practice_button.setOnClickListener(onclick);
         user_button.setOnClickListener(onclick);
     }
-
-
         View.OnClickListener onclick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,12 +92,47 @@ public class MainLayout extends AppCompatActivity{
                         startActivity(intentvedio);
                         break;
                     case R.id.practice_button:
-                        Toast.makeText(MainLayout.this, "Practice", Toast.LENGTH_SHORT).show();
+                        HttpUtil.sendOkHttpRequest("http://www.ish2b.cn:9090/gsqls",new okhttp3.Callback(){
+                            @Override
+                            public void onResponse(Call call,Response response) throws IOException{
+                                FeedBack<ArrayList<User>> fbdata =  HttpUtil.ParseJson(response.body().string());
+                                 Log.d("test",fbdata.toString());
+                                 Log.e("msg",fbdata.msg);
+
+                                 Message message = new Message();
+                                 message.what = UPDATE_TEXT;
+                                 message.obj = responseData;
+                                 handler.sendMessage(message);
+                            }
+                            @Override
+                            public void onFailure(Call call,IOException e){
+                                //
+                            }
+                        });
                         Intent intentparctice = new Intent(MainLayout.this,PracticeActivity.class);
                         startActivity(intentparctice);
                         break;
                     case R.id.user_button:
                         Toast.makeText(MainLayout.this, "User", Toast.LENGTH_SHORT).show();
+                        SQLiteDatabase myDateBase = DBUtil.openDatabase(MainLayout.this);
+                        String sql = "SELECT * FROM COMPANY ";
+                        try{
+                            Cursor c = myDateBase.rawQuery(sql,null);
+                            if (  c.moveToFirst()){
+                                do{
+                                    String getname = c.getString(c.getColumnIndex("NAME"));
+                                    Toast.makeText(MainLayout.this,getname,Toast.LENGTH_LONG).show();
+                                }while (c.moveToNext());
+                            }
+                            if (!c.isClosed()){
+                                c.close();
+                            }
+                            if(myDateBase.isOpen()){
+                                myDateBase.close();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                 }
             }
         };
@@ -90,6 +162,33 @@ public class MainLayout extends AppCompatActivity{
            });
 
        }
-   }
+    class GetTestjson extends Thread{
+        public void run(){
+            try{
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("http://www.ish2b.cn:9090/gsqls")
+                        .build();
+                Response response = client.newCall(request).execute();
+                String vediojson = response.body().string();
+                Getcardata(vediojson);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    //将json格式转化为String
+    public  void Getcardata(String vediojson){
+        try{
+            JSONArray jsonArray = new JSONArray(vediojson);
+            for(int i = 0 ;i<jsonArray.length();i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                cluser = new Cluser(jsonObject.getString("account"),jsonObject.getString("password"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
+}
