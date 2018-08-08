@@ -1,5 +1,6 @@
 package com.bignerdranch.android.CLearning;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +18,7 @@ import android.widget.*;
 
 import com.HttpTool.FeedBack;
 import com.HttpTool.HttpUtil;
+import com.HttpTool.OnServerCallBack;
 import com.HttpTool.User;
 import com.Type.Cluser;
 import com.Type.VedioCard;
@@ -51,6 +53,7 @@ public class MainLayout extends AppCompatActivity{
     private ImageButton practice_button;
     private ImageButton user_button;
     private Cluser cluser;
+    public static Context mContext;
     private String responseData;
                 public static final int UPDATE_TEXT = 1;
                 private Handler handler = new Handler(){
@@ -120,10 +123,16 @@ public class MainLayout extends AppCompatActivity{
                         HttpUtil.sendOkHttpRequest("http://www.ish2b.cn:9090/gsqls",new okhttp3.Callback(){
                             @Override
                             public void onResponse(Call call,Response response) throws IOException{
-                                FeedBack<ArrayList<User>> fbdata =  HttpUtil.ParseJson(response.body().string());
-                                Log.d("test",fbdata.toString());
-                                Log.e("msg",fbdata.msg);
-
+                                String fb = response.body().string();
+                                HttpUtil.getRequest(fb, null, new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
+                                    @Override
+                                    public void onSuccess(List<User> data) {
+                                        Log.e("test",data.get(0).account);
+                                    }
+                                    @Override
+                                    public void onFailure(int code, String msg) {
+                                    }
+                                });
                                 Message message = new Message();
                                 message.what = UPDATE_TEXT;
                                 message.obj = responseData;
@@ -190,6 +199,9 @@ public class MainLayout extends AppCompatActivity{
             e.printStackTrace();
         }
     }
-
+    //return mContext
+    public static Context getContext() {
+        return mContext;
+    }
 
 }

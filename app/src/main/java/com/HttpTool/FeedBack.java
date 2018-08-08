@@ -3,8 +3,17 @@ package com.HttpTool;
 public class FeedBack<T> {
     public String msg;
     public T data;
+    public int code;
 
-    public FeedBack(String msg,  T data) {
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        code = code;
+    }
+
+    public FeedBack(String msg, T data) {
         this.msg = msg;
         this.data = data;
     }
@@ -17,12 +26,12 @@ public class FeedBack<T> {
         this.msg = msg;
     }
 
-    public Object getFbdata() {
+    public T getData() {
         return data;
     }
 
-    public void setFbdata( T fbdata) {
-        this.data = fbdata;
+    public void setData(T data) {
+        this.data = data;
     }
 
     @Override

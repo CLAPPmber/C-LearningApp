@@ -1,5 +1,6 @@
 package com.bignerdranch.android.CLearning;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     TextView registerText;
     CheckBox rememberCB;
     ToggleButton isHpw;
+    public static Context mContext;
     int COUNT;
 
     {
@@ -128,5 +130,10 @@ public class MainActivity extends AppCompatActivity {
             Passwordedit.setText(pref.getString("lastPassword", ""));
             rememberCB.setChecked(true);
         }
+    }
+
+    //return mContext
+    public static Context getContext() {
+        return mContext;
     }
 }

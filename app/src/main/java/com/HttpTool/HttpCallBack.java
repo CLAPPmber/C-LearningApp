@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public abstract class HttpCallBack<T> implements okhttp3.Callback {
+public abstract class HttpCallBack<T>  {
     private Type mGenericSuperclass;
-    @Override
-    public void onResponse(Call call, Response response) throws IOException {
+
+    public HttpCallBack() {
         Type genericSuperclass = getClass().getGenericSuperclass();
         if (genericSuperclass instanceof ParameterizedType) {
             mGenericSuperclass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
@@ -22,13 +22,14 @@ public abstract class HttpCallBack<T> implements okhttp3.Callback {
             mGenericSuperclass = Object.class;
         }
     }
-    public abstract void onResolve(T t);
-    @Override
-    public void onFailure(Call call,IOException e){
 
-    }
+    public abstract void onResolve(T t);
+
+    public abstract void onFailed(int code, String msg);
+
     public Type getType() {
         return mGenericSuperclass;
     }
+
 
 }
