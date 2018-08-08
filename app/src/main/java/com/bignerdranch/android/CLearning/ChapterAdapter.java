@@ -48,20 +48,11 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
         holder.cpimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //章节图片点击事件
                 int position = holder.getAdapterPosition();
                 Chapter  chapter = mChapters.get(position);
                 Toast.makeText(view.getContext(),"into practice number"+chapter.getQuestionnum(),Toast.LENGTH_SHORT)
                         .show();
-                String video = "http://123.207.25.239:2332/043%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%8C%87%E9%92%8803(%E6%96%B0%E7%89%88).mp4";
-                Intent openVideo = new Intent(Intent.ACTION_VIEW);
-                openVideo.setDataAndType(Uri.parse(video), "video/*");
-                mContext.startActivity(openVideo);
-//                String url = "http://study.163.com/course/courseLearn.htm?courseId=271005#/learn/video?lessonId=381169&courseId=271005";//示例，实际填你的网络视频链接
-//                String extension = MimeTypeMap.getFileExtensionFromUrl(url);
-//                String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
-//                Intent mediaIntent = new Intent(Intent.ACTION_VIEW);
-//                mediaIntent.setDataAndType(Uri.parse(url), mimeType);
-//                mContext.startActivity(mediaIntent);
             }
         });
 

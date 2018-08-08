@@ -27,9 +27,9 @@ public class BookActivity extends AppCompatActivity {
 
 
 
-private List<Book> mBookList = new ArrayList<>();
+    private List<Book> mBookList = new ArrayList<>();
 
-private BookAdapter mAdapter;
+    private BookAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

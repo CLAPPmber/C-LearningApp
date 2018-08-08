@@ -10,6 +10,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+/**
+ * 直接调用该类的SQLiterDatabase返回一个SQLiteDatabase就可以对
+ * raw中PACKAGE_NAME的数据库进行操作
+ */
+
+
 public class DBUtil {
     private static SQLiteDatabase database;
     public static final String DATABASE_FILENAME = "test.db";

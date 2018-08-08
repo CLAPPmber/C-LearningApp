@@ -92,23 +92,7 @@ public class MainLayout extends AppCompatActivity{
                         startActivity(intentvedio);
                         break;
                     case R.id.practice_button:
-                        HttpUtil.sendOkHttpRequest("http://www.ish2b.cn:9090/gsqls",new okhttp3.Callback(){
-                            @Override
-                            public void onResponse(Call call,Response response) throws IOException{
-                                FeedBack<ArrayList<User>> fbdata =  HttpUtil.ParseJson(response.body().string());
-                                 Log.d("test",fbdata.toString());
-                                 Log.e("msg",fbdata.msg);
 
-                                 Message message = new Message();
-                                 message.what = UPDATE_TEXT;
-                                 message.obj = responseData;
-                                 handler.sendMessage(message);
-                            }
-                            @Override
-                            public void onFailure(Call call,IOException e){
-                                //
-                            }
-                        });
                         Intent intentparctice = new Intent(MainLayout.this,PracticeActivity.class);
                         startActivity(intentparctice);
                         break;
@@ -133,6 +117,23 @@ public class MainLayout extends AppCompatActivity{
                         }catch (Exception e){
                             e.printStackTrace();
                         }
+                        HttpUtil.sendOkHttpRequest("http://www.ish2b.cn:9090/gsqls",new okhttp3.Callback(){
+                            @Override
+                            public void onResponse(Call call,Response response) throws IOException{
+                                FeedBack<ArrayList<User>> fbdata =  HttpUtil.ParseJson(response.body().string());
+                                Log.d("test",fbdata.toString());
+                                Log.e("msg",fbdata.msg);
+
+                                Message message = new Message();
+                                message.what = UPDATE_TEXT;
+                                message.obj = responseData;
+                                handler.sendMessage(message);
+                            }
+                            @Override
+                            public void onFailure(Call call,IOException e){
+                                //
+                            }
+                        });
                 }
             }
         };
