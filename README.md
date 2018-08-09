@@ -1,8 +1,3 @@
 # C-Learning
 C++LaarningAPP
-Add
-Test2
- test3
-Test4Test
-dululu
-
+Add1.0.1
