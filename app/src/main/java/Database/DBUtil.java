@@ -37,7 +37,6 @@ public class DBUtil {
                 while ((count = is.read(buffer)) > 0) {
                     fos.write(buffer, 0, count);
                 }
-
                 fos.close();
                 is.close();
             }

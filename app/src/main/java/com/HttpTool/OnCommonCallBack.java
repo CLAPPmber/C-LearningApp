@@ -1,7 +1,9 @@
 package com.HttpTool;
 
 import ToastUtil.ToastUtil;
-
+/*
+解析返回的json数据
+*/
 public abstract  class OnCommonCallBack<T> extends HttpCallBack<T> {
 
     @Override

@@ -3,7 +3,9 @@ package com.HttpTool;
 
 
 import ToastUtil.ToastUtil;
-
+/*
+解析返回的Json数据
+ */
 public abstract class OnServerCallBack<T,V> extends HttpCallBack<T>{
     @Override
     public void onResolve(T t) {

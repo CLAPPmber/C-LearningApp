@@ -8,18 +8,19 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Response;
-
+//监听http Response，并回调OnSuccess和onFailure
 public class HttpCallbackListener implements okhttp3.Callback {
+    private HttpCallBack mHttpCallBack;
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        FeedBack<ArrayList<User>> fbdata =  HttpUtil.ParseJson(response.body().string());
-        Log.d("test",fbdata.toString());
-        Log.e("msg",fbdata.msg);
-
-
+        String fb = response.body().string();
+        HttpUtil.getRequest(fb,null,mHttpCallBack);
     }
     @Override
     public void onFailure(Call call,IOException e){
-        //
+        //handle http fail
+    }
+    public HttpCallbackListener(HttpCallBack httpCallBack) {
+        mHttpCallBack = httpCallBack;
     }
 }

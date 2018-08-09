@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Response;
+/*
+OnSserverCallBack和OnCommonCallBack的父类
+ */
 
 public abstract class HttpCallBack<T>  {
     private Type mGenericSuperclass;

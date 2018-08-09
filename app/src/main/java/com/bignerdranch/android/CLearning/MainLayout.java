@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.*;
 
+import com.HttpTool.API;
 import com.HttpTool.FeedBack;
 import com.HttpTool.HttpUtil;
 import com.HttpTool.OnServerCallBack;
@@ -27,6 +28,7 @@ import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBUtil;
+import ToastUtil.ToastUtil;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -60,8 +63,7 @@ public class MainLayout extends AppCompatActivity{
                     public void handleMessage(Message msg){
                         switch(msg.what){
                 case UPDATE_TEXT:
-                    Getcardata(msg.obj.toString());
-                    Toast.makeText(MainLayout.this, cluser.getAccount()+cluser.getPassword(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainLayout.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -101,48 +103,9 @@ public class MainLayout extends AppCompatActivity{
                         break;
                     case R.id.user_button:
                         Toast.makeText(MainLayout.this, "User", Toast.LENGTH_SHORT).show();
-                        SQLiteDatabase myDateBase = DBUtil.openDatabase(MainLayout.this);
-                        String sql = "SELECT * FROM COMPANY ";
-                        try{
-                            Cursor c = myDateBase.rawQuery(sql,null);
-                            if (  c.moveToFirst()){
-                                do{
-                                    String getname = c.getString(c.getColumnIndex("NAME"));
-                                    Toast.makeText(MainLayout.this,getname,Toast.LENGTH_LONG).show();
-                                }while (c.moveToNext());
-                            }
-                            if (!c.isClosed()){
-                                c.close();
-                            }
-                            if(myDateBase.isOpen()){
-                                myDateBase.close();
-                            }
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        HttpUtil.sendOkHttpRequest("http://www.ish2b.cn:9090/gsqls",new okhttp3.Callback(){
-                            @Override
-                            public void onResponse(Call call,Response response) throws IOException{
-                                String fb = response.body().string();
-                                HttpUtil.getRequest(fb, null, new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
-                                    @Override
-                                    public void onSuccess(List<User> data) {
-                                        Log.e("test",data.get(0).account);
-                                    }
-                                    @Override
-                                    public void onFailure(int code, String msg) {
-                                    }
-                                });
-                                Message message = new Message();
-                                message.what = UPDATE_TEXT;
-                                message.obj = responseData;
-                                handler.sendMessage(message);
-                            }
-                            @Override
-                            public void onFailure(Call call,IOException e){
-                                //
-                            }
-                        });
+                        testget();
+                        testpost();
+
                 }
             }
         };
@@ -203,5 +166,66 @@ public class MainLayout extends AppCompatActivity{
     public static Context getContext() {
         return mContext;
     }
+    //测试Get请求
+    public void testget(){
+        //进行Get请求
+        HttpUtil.sendOkHttpGetRequest(API.Url_GetJsons, new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
+            @Override
+            public void onSuccess(List<User> data) {
+                Log.e("test",data.get(0).account);
+                Message message = new Message();
+                message.what = UPDATE_TEXT;
+                message.obj = data.get(0).account;
+                handler.sendMessage(message);
+            }
+            @Override
+            public void onFailure(int code, String msg) {
 
+            }
+        });
+    }
+    //测试Post请求
+    public void testpost(){
+        User use = new User("nihaa","123123");
+        List<User> uses = new ArrayList<>();
+        uses.add(use);
+        uses.add(use);
+        HttpUtil.sendOkHttpPostRequest(API.Url_TestPost,new Gson().toJson(uses),new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
+            @Override
+            public void onSuccess(List<User> data) {
+                Log.e("test",data.get(0).account);
+                Message message = new Message();
+                message.what = UPDATE_TEXT;
+                message.obj = data.get(0).account;
+                handler.sendMessage(message);
+            }
+            @Override
+            public void onFailure(int code, String msg) {
+                //操作错误
+            }
+        });
+     }
+    //测试数据库操作
+    public void testsql(){
+        SQLiteDatabase myDateBase = DBUtil.openDatabase(MainLayout.this);
+        String sql = "SELECT * FROM chapter";
+        try{
+            Cursor c = myDateBase.rawQuery(sql,null);
+            if (  c.moveToFirst()){
+                do{
+                    String getname = c.getString(c.getColumnIndex("chapter_name"));
+                    Log.e("sql",getname);
+                    Toast.makeText(MainLayout.this,getname,Toast.LENGTH_LONG).show();
+                }while (c.moveToNext());
+            }
+            if (!c.isClosed()){
+                c.close();
+            }
+            if(myDateBase.isOpen()){
+                myDateBase.close();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
