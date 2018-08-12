@@ -51,8 +51,11 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
                 //章节图片点击事件
                 int position = holder.getAdapterPosition();
                 Chapter  chapter = mChapters.get(position);
-                Toast.makeText(view.getContext(),"into practice number"+chapter.getQuestionnum(),Toast.LENGTH_SHORT)
-                        .show();
+                //Toast.makeText(view.getContext(),"into practice number"+chapter.getQuestionnum(),Toast.LENGTH_SHORT)
+                //        .show();
+                //Intent intent =new Intent(mContext,PracticingActivity.class);
+                // intent.putExtra("extra_data",data);
+               // mContext.startActivity(intent);
             }
         });
 
@@ -63,7 +66,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Chapter chapter = mChapters.get(position);
         holder.chaptername.setText(chapter.getchaptername());
-        holder.quesnum.setText("试题数量： "+chapter.getQuestionnum());
+        holder.quesnum.setText("进度： "+chapter.getQuestionnum());
     }
 
     @Override

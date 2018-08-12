@@ -7,9 +7,9 @@ package com.Type;
 public class Chapter {
     private String chaptername;
 
-    int questionnum;
+    private String questionnum;
 
-    public Chapter(String name,int num){
+    public Chapter(String name,String num){
         this.chaptername = name;
         this.questionnum = num;
     }
@@ -17,7 +17,7 @@ public class Chapter {
     public String getchaptername(){
         return chaptername;
     }
-    public int getQuestionnum() {
+    public String getQuestionnum() {
         return questionnum;
     }
 }
