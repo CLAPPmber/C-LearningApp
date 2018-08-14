@@ -53,9 +53,9 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
                 Chapter  chapter = mChapters.get(position);
                 //Toast.makeText(view.getContext(),"into practice number"+chapter.getQuestionnum(),Toast.LENGTH_SHORT)
                 //        .show();
-                //Intent intent =new Intent(mContext,PracticingActivity.class);
+                Intent intent =new Intent(mContext,PracticingActivity.class);
                 // intent.putExtra("extra_data",data);
-               // mContext.startActivity(intent);
+                mContext.startActivity(intent);
             }
         });
 

@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/appinc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".MainLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,21 +19,22 @@
         </activity>
         <activity
             android:name=".PracticeActivity"
-            android:label="教材同步试题"></activity>
+            android:label="教材同步试题" />
         <activity
             android:name=".BookActivity"
-            android:label="相关书籍"></activity>
+            android:label="相关书籍" />
         <activity
             android:name=".vedio"
-            android:label="视频列表"></activity>
-        <activity android:name=".TestActivity"></activity>
-        <activity android:name="com.test.file.BookDetail"></activity>
+            android:label="视频列表" />
+        <activity android:name="com.test.file.BookDetail" />
         <activity
             android:name="com.test.file.BookDirectory"
-            android:hardwareAccelerated="false"></activity>
-        <activity android:name="com.test.file.PdfBook"></activity>
-        <activity android:name=".vedio_card"></activity>
-        <activity android:name=".VedioList"></activity>
+            android:hardwareAccelerated="false" />
+        <activity android:name="com.test.file.PdfBook" />
+        <activity android:name=".vedio_card" />
+        <activity android:name=".VedioList" />
+        <activity android:name=".PracticingActivity"
+            android:label="习题"></activity>
     </application>
 
 </manifest>
