@@ -15,6 +15,8 @@ import com.Type.Chapter;
 
 import java.util.List;
 
+import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
+
 /**
  * Created by Administrator on 2017\11\26 0026.
  */
@@ -50,9 +52,12 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
             public void onClick(View view) {
                 //章节图片点击事件
                 int position = holder.getAdapterPosition();
-                Chapter  chapter = mChapters.get(position);
-                Toast.makeText(view.getContext(),"into practice number"+chapter.getQuestionnum(),Toast.LENGTH_SHORT)
-                        .show();
+                Chapter chapter = mChapters.get(position);
+
+                chapter_data.set_now_chapter(chapter.get_chapter_num());//获取访问的是第几章
+                Intent intent =new Intent(mContext,PracticingActivity.class);
+                mContext.startActivity(intent);
+
             }
         });
 
@@ -63,7 +68,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Chapter chapter = mChapters.get(position);
         holder.chaptername.setText(chapter.getchaptername());
-        holder.quesnum.setText("试题数量： "+chapter.getQuestionnum());
+        holder.quesnum.setText("进度： "+(chapter_data.get_chapter_progress(chapter.get_chapter_num())-1)+"/"+chapter_data.get_chapter_max_num(chapter.get_chapter_num()));
     }
 
     @Override

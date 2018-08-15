@@ -22,6 +22,7 @@ import com.HttpTool.HttpUtil;
 import com.HttpTool.OnServerCallBack;
 import com.HttpTool.User;
 import com.Type.Cluser;
+import com.Type.Retprorec;
 import com.Type.VedioCard;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
@@ -185,18 +186,23 @@ public class MainLayout extends AppCompatActivity{
     }
     //测试Post请求
     public void testpost(){
-        User use = new User("nihaa","123123");
+        User use = new User("userone","123123");
         List<User> uses = new ArrayList<>();
         uses.add(use);
         uses.add(use);
-        HttpUtil.sendOkHttpPostRequest(API.Url_TestPost,new Gson().toJson("ok"),new OnServerCallBack<FeedBack<String>,String>(){
+        HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec,new Gson().toJson(use),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
             @Override
-                public void onSuccess(String data) {
-                    Log.e("test",data);
+                public void onSuccess(List<Retprorec> data) {
+                if (data == null){
+                    Log.e("data null","data null");
+                    return;
+                }
+                    Log.e("chapter_num",String.valueOf(data.get(0).chapter_num));
+                    Log.e("chapter_rec",String.valueOf(data.get(0).chapter_rec));
                     Message message = new Message();
                     message.what = UPDATE_TEXT;
                     message.obj = data;
-                handler.sendMessage(message);
+                    handler.sendMessage(message);
             }
             @Override
             public void onFailure(int code, String msg) {
