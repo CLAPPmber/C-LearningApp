@@ -103,7 +103,6 @@ public class MainLayout extends AppCompatActivity{
                         break;
                     case R.id.user_button:
                         Toast.makeText(MainLayout.this, "User", Toast.LENGTH_SHORT).show();
-                        testget();
                         testpost();
 
                 }
@@ -190,13 +189,13 @@ public class MainLayout extends AppCompatActivity{
         List<User> uses = new ArrayList<>();
         uses.add(use);
         uses.add(use);
-        HttpUtil.sendOkHttpPostRequest(API.Url_TestPost,new Gson().toJson(uses),new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
+        HttpUtil.sendOkHttpPostRequest(API.Url_TestPost,new Gson().toJson("ok"),new OnServerCallBack<FeedBack<String>,String>(){
             @Override
-            public void onSuccess(List<User> data) {
-                Log.e("test",data.get(0).account);
-                Message message = new Message();
-                message.what = UPDATE_TEXT;
-                message.obj = data.get(0).account;
+                public void onSuccess(String data) {
+                    Log.e("test",data);
+                    Message message = new Message();
+                    message.what = UPDATE_TEXT;
+                    message.obj = data;
                 handler.sendMessage(message);
             }
             @Override
