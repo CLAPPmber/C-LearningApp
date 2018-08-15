@@ -3,14 +3,21 @@ package com.bignerdranch.android.CLearning;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.HttpTool.API;
+import com.HttpTool.FeedBack;
+import com.HttpTool.HttpUtil;
+import com.HttpTool.OnServerCallBack;
+import com.HttpTool.User;
 import com.Type.Chapter;
 import com.Type.Chapter_data;
 
