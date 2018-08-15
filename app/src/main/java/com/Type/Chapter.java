@@ -6,12 +6,13 @@ package com.Type;
 
 public class Chapter {
     private String chaptername;
-
+    private int chapter_num;
     private String questionnum;
 
-    public Chapter(String name,String num){
+    public Chapter(String name,String num,int num2){
         this.chaptername = name;
         this.questionnum = num;
+        this.chapter_num=num2;
     }
 
     public String getchaptername(){
@@ -19,5 +20,8 @@ public class Chapter {
     }
     public String getQuestionnum() {
         return questionnum;
+    }
+    public int get_chapter_num() {
+        return chapter_num;
     }
 }

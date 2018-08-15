@@ -1,5 +1,6 @@
 package com.bignerdranch.android.CLearning;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.Type.Chapter;
+import com.Type.Chapter_data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +22,13 @@ import Database.DBUtil;
 public class PracticeActivity extends AppCompatActivity {
 
     private List<Chapter> mChapterList = new ArrayList<>();
+    static Chapter_data chapter_data=new Chapter_data();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_practice);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -32,12 +37,21 @@ public class PracticeActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.img_back);
         }
+        set_cp();
         importChapter();
+        updata_adapter();
+    }
+
+    private void updata_adapter(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         ChapterAdapter adapter = new ChapterAdapter(mChapterList);
         recyclerView.setAdapter(adapter);
+    }
+    private void set_cp(){//获取用户每个章节的进度
+        for(int i=1;i<=11;i++)
+            chapter_data.set_chapter_progress(i,1);
     }
 
     private void importChapter(){
@@ -79,12 +93,17 @@ public class PracticeActivity extends AppCompatActivity {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            Chapter chapter = new Chapter("第" + i + "章   "+chapter_name, 0 +"/"+ num);
+            chapter_data.set_chapter_max_num(i,num);
+            Chapter chapter = new Chapter("第" + i + "章   "+chapter_name, chapter_data.get_chapter_progress(i) +"/"+ num,i);
             mChapterList.add(chapter);
         }
     }
 
-
+    @Override
+    protected void onStart(){
+       super.onStart();
+       updata_adapter();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

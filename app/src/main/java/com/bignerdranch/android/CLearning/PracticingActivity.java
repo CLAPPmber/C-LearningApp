@@ -17,6 +17,8 @@ import com.Type.question;
 
 import Database.DBUtil;
 
+import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
+
 public class PracticingActivity extends AppCompatActivity {
 
     private Button button_a;
@@ -33,7 +35,15 @@ public class PracticingActivity extends AppCompatActivity {
     private TextView test_option_d;
     private TextView test_ans;
     private TextView test_ana;
-    private question qs;
+    private String question_name="";
+    private int question_ans=0;
+    private String question_analysis="";
+    private String question_a="";
+    private String question_b="";
+    private String question_c="";
+    private String question_d="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +75,7 @@ public class PracticingActivity extends AppCompatActivity {
         test_option_d = (TextView) findViewById(R.id.option_d);
         test_ans = (TextView) findViewById(R.id.ans);
         test_ana = (TextView) findViewById(R.id.ana);
-        update_question(1,1);
+        update_question(chapter_data.get_now_chapter(),chapter_data.get_chapter_progress((chapter_data.get_now_chapter())));
 
 
     }
@@ -75,38 +85,86 @@ public class PracticingActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.button_a:
-                    Toast.makeText(PracticingActivity.this,"A",Toast.LENGTH_SHORT).show();
+                    if(chapter_data.get_now_question()<chapter_data.get_chapter_progress(chapter_data.get_now_chapter())) break;
+                    if(question_ans==1)print(1,1);
+                    else print(0,1);
+                    work();
                     break;
                 case R.id.button_b:
-                    Toast.makeText(PracticingActivity.this,"B",Toast.LENGTH_SHORT).show();
+                    if(chapter_data.get_now_question()<chapter_data.get_chapter_progress(chapter_data.get_now_chapter())) break;
+                    if(question_ans==2)print(1,2);
+                    else print(0,2);
+                    work();
                     break;
                 case R.id.button_c:
-                    Toast.makeText(PracticingActivity.this,"C",Toast.LENGTH_SHORT).show();
+                    if(chapter_data.get_now_question()<chapter_data.get_chapter_progress(chapter_data.get_now_chapter())) break;
+                    if(question_ans==3)print(1,3);
+                    else print(0,3);
+                    work();
                     break;
                 case R.id.button_d:
-                    Toast.makeText(PracticingActivity.this,"D",Toast.LENGTH_SHORT).show();
+                    if(chapter_data.get_now_question()<chapter_data.get_chapter_progress(chapter_data.get_now_chapter())) break;
+                    if(question_ans==4)print(1,4);
+                    else print(0,4);
+                    work();
                     break;
                 case R.id.button_pre:
-                    Toast.makeText(PracticingActivity.this,"pre",Toast.LENGTH_SHORT).show();
+                   if(chapter_data.get_now_question()==1)
+                       Toast.makeText(PracticingActivity.this,"已经是最前一题咯~",Toast.LENGTH_SHORT).show();
+                   else
+                       jump(-1);
                     break;
                 case R.id.button_nxt:
-                    Toast.makeText(PracticingActivity.this,"nxt",Toast.LENGTH_SHORT).show();
+                    if(chapter_data.get_now_question()==chapter_data.get_chapter_max_num(chapter_data.get_now_chapter()))
+                        Toast.makeText(PracticingActivity.this,"已经是最后一题啦~",Toast.LENGTH_SHORT).show();
+                    else if(chapter_data.get_now_question()==chapter_data.get_chapter_progress(chapter_data.get_now_chapter()))
+                        Toast.makeText(PracticingActivity.this,"回答该题后解锁下一题哦~",Toast.LENGTH_SHORT).show();
+                    else
+                        jump(1);
                     break;
             }
         }
     };
 
+    private void jump(int type){
+        if(type==1){
+            chapter_data.set_now_question(chapter_data.get_now_question()+1);
+            update_question(chapter_data.get_now_chapter(),chapter_data.get_now_question());
+        }
+        else{
+            chapter_data.set_now_question(chapter_data.get_now_question()-1);
+            update_question(chapter_data.get_now_chapter(),chapter_data.get_now_question());
+        }
+    }
 
-    void update_question(int chapter_num,int question_num){
+    private void work(){
+        test_ana.setText("解析:\n "+question_analysis);
+        int x=chapter_data.get_now_chapter();
+        int y=chapter_data.get_chapter_progress(x);
+        chapter_data.set_chapter_progress(x,y+1);
+    }
+
+    private void print(int key, int option){
+        if(key==1){
+            test_ans.setText("答案:\n"+" 您选择的答案是"+(char)('A'+option-1)+",标准答案是"+(char)(question_ans-1+'A')+"\n 回答正确咯`~");
+            Toast.makeText(PracticingActivity.this,"回答正确啦~",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            test_ans.setText("答案:\n"+" 您选择的答案是"+(char)('A'+option-1)+",标准答案是"+(char)(question_ans-1+'A')+"\n 错啦~错啦~继续加油!`~");
+            Toast.makeText(PracticingActivity.this, "错啦,错啦~", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void update_question(int chapter_num,int question_num){
         SQLiteDatabase myDateBase = DBUtil.openDatabase(PracticingActivity.this);
         String sql = "SELECT * FROM question WHERE chapter_num ="+chapter_num+" AND question_num ="+question_num;
-        String question_name="";
-        int question_ans=0;
-        String question_analysis="";
-        String question_a="";
-        String question_b="";
-        String question_c="";
-        String question_d="";
+         question_name="";
+         question_ans=1;
+         question_analysis="";
+         question_a="";
+         question_b="";
+         question_c="";
+         question_d="";
         try{
             Cursor c = myDateBase.rawQuery(sql,null);
             if (  c.moveToFirst()){
@@ -126,15 +184,21 @@ public class PracticingActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        test_num.setText("1/10");
+        chapter_data.set_now_question(question_num);
+        test_num.setText(chapter_data.get_now_question()+"/"+chapter_data.get_chapter_max_num(chapter_data.get_now_chapter()));
         test_question.setText(question_name);
         test_option_a.setText(question_a);
         test_option_b.setText(question_b);
         test_option_c.setText(question_c);
         test_option_d.setText(question_d);
-//          test_ans.setText(question_ans);
-          test_ana.setText(question_analysis);
+        if(question_num<chapter_data.get_chapter_progress(chapter_data.get_now_chapter())){
+            test_ans.setText("答案:\n 该题您已完成咯~\n 正确选项是:"+(char)(question_ans-1+'A'));
+            test_ana.setText("解析:\n "+question_analysis);
+        }
+        else{
+            test_ans.setText(" ");
+            test_ana.setText(" ");
+        }
     }
 
 

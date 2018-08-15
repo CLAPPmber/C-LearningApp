@@ -35,14 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="8dp"
         android:textSize="17sp"
         android:text="单选题" />
         <TextView
             android:id="@+id/test_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="245dp"
             android:layout_marginTop="3dp"
             android:text="0/10"
             android:textSize="17sp" />
@@ -50,7 +50,16 @@
 
     </LinearLayout>
 
-
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="#FF909090"/>
+    </LinearLayout>
     <LinearLayout
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
