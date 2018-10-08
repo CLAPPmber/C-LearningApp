@@ -10,13 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainLayout">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainLayout"/>
         <activity
             android:name=".PracticeActivity"
             android:label="教材同步试题" />
@@ -35,6 +29,17 @@
         <activity android:name=".VedioList" />
         <activity android:name=".PracticingActivity"
             android:label="习题"></activity>
+
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".RegistActivity"/>
+
     </application>
 
 </manifest>
