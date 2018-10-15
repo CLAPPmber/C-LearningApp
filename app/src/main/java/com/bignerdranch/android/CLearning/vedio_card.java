@@ -38,7 +38,7 @@ public class vedio_card extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         view = inflater.inflate(R.layout.activity_vedio_card,container,false);
+        view = inflater.inflate(R.layout.activity_vedio_card,container,false);
         Getcard getcard = new Getcard();
         mVedioCardList = new ArrayList<>();
         getcard.start();
@@ -65,7 +65,7 @@ public class vedio_card extends Fragment {
             try{
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
-                        .url("http://123.207.25.239:2332/json/vedio.json")
+                        .url("http://123.207.25.239:2332/json/Vedio.json")
                         .build();
                 Response response = client.newCall(request).execute();
                 String vediojson = response.body().string();

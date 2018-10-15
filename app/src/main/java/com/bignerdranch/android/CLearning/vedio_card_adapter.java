@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ImgTool.ImageUtils;
 import com.Type.VedioCard;
 
 import java.io.IOException;
@@ -68,14 +69,15 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         VedioCard vedioCard = mVedioCards.get(position);
         holder.Vname.setText(vedioCard.getVname());
-        GetImg getImg = new GetImg(vedioCard.getImg());
-        getImg.start();
-        try{
-            getImg.join();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        holder.vedioimg.setImageBitmap(mBitmap);
+        ImageUtils.setImageBitmap(vedioCard.getImg(),holder.vedioimg,String.valueOf(position),mContext);
+//        GetImg getImg = new GetImg(vedioCard.getImg());
+//        getImg.start();
+//        try{
+//            getImg.join();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        holder.vedioimg.setImageBitmap(mBitmap);
     }
 
     @Override
@@ -112,5 +114,12 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
         }
         return bitmap;
     }
+
+
+    //保存文件到本地
+
+
+
+
 }
 
