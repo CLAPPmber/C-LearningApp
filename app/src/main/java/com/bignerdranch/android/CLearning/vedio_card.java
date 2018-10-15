@@ -1,12 +1,16 @@
 package com.bignerdranch.android.CLearning;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.Type.VedioCard;
 
@@ -20,37 +24,37 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class vedio_card extends AppCompatActivity {
+public class vedio_card extends Fragment {
 
     private static List<VedioCard> mVedioCardList;
     private vedio_card_adapter VedioCardAdapter;
+    private View view;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vedio_card);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_vedio_card);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.img_back);
-        }
-        Getcard getcard = new Getcard();
-        mVedioCardList = new ArrayList<>();
-        getcard.start();
+    public vedio_card(){
+
     }
 
     @Override
-    protected void onStart() {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+         view = inflater.inflate(R.layout.activity_vedio_card,container,false);
+        Getcard getcard = new Getcard();
+        mVedioCardList = new ArrayList<>();
+        getcard.start();
+        return view;
+    }
+
+    @Override
+    public void onStart() {
         super.onStart();
 //        try{
 //            getcard.join();
 //        }catch (InterruptedException e){
 //            e.printStackTrace();
 //        }
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_video_card);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,1);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_video_card);
+        GridLayoutManager layoutManager = new GridLayoutManager(this.getActivity(),1);
         recyclerView.setLayoutManager(layoutManager);
         VedioCardAdapter = new vedio_card_adapter(mVedioCardList);
         recyclerView.setAdapter(VedioCardAdapter);
@@ -86,20 +90,10 @@ public class vedio_card extends AppCompatActivity {
         }
         restart();
     }
-    //Back
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                break;
-            default:
-        }
-        return true;
-    }
+
     //转化到主线程
     private void restart(){
-        runOnUiThread(new Runnable() {
+        this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 onStart();

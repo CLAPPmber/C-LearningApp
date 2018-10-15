@@ -59,8 +59,14 @@ public class BookDirectory extends AppCompatActivity {
             recyclerView.setAdapter(Bdadapter);
 }
 
-//从文件Directory文件中读取书本目录并放入到DirectoryList中
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    //从Directory文件中读取书本目录并放入到DirectoryList中
     private void getDirectory(){
+        DirectoryList.clear();
         BufferedReader reader = null;
         AssetManager Am = getAssets();
         try {

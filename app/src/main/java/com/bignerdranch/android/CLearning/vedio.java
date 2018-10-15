@@ -1,13 +1,16 @@
 package com.bignerdranch.android.CLearning;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -15,8 +18,12 @@ import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
-public class vedio extends AppCompatActivity {
+public class vedio extends Fragment {
     // 创建一个上下文菜单的方法
+
+    public vedio(){
+    }
+
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenuInfo menuInfo) {
 
@@ -41,26 +48,20 @@ public class vedio extends AppCompatActivity {
     private ExpandableListAdapter adapter = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         // 去除标题,this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 取消状态栏，充满全屏
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
              //   WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        View v = inflater.inflate(R.layout.activity_vedio,container,false);
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_vedio);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarvedio);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.img_back);
-        }
         // 实例化组件
-        this.eListView = (ExpandableListView) findViewById(R.id.elistview);
+        this.eListView = (ExpandableListView) v.findViewById(R.id.elistview);
 
         // 声明一个adapter对象
-        adapter = new myExpendableadapler(this);
+        adapter = new myExpendableadapler(this.getActivity());
         // 设置适配器提供了数据
         this.eListView.setAdapter(this.adapter);
 
@@ -72,6 +73,7 @@ public class vedio extends AppCompatActivity {
         this.eListView.setOnGroupClickListener(new GroupClickListener());
         this.eListView.setOnGroupExpandListener(new GroupExpandListener());
         this.eListView.setOnGroupCollapseListener(new GroupCollapseListener());
+        return v;
     }
 
     // /1，子选项点击事件
@@ -107,14 +109,5 @@ public class vedio extends AppCompatActivity {
         }
 
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                break;
-            default:
-        }
-        return true;
-    }
+
 }

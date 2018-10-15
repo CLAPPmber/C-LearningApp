@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.HttpTool.API;
@@ -37,31 +41,29 @@ import Database.DBUtil;
 import static com.bignerdranch.android.CLearning.MainLayout.UPDATE_TEXT;
 import static java.lang.Integer.valueOf;
 
-public class PracticeActivity extends AppCompatActivity {
+public class PracticeActivity extends Fragment {
 
     private List<Chapter> mChapterList = new ArrayList<>();
     static Chapter_data chapter_data=new Chapter_data();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_practice);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.img_back);
-        }
-        testpost();
-        importChapter();
-        updata_adapter();
+    public PracticeActivity(){
+        // Required empty public constructor
     }
 
-    private void updata_adapter(){
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View v = inflater.inflate(R.layout.activity_practice,container,false);
+        testpost();
+        importChapter();
+        updata_adapter(v);
+        return v;
+    }
+
+    private void updata_adapter(View v){
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
         ChapterAdapter adapter = new ChapterAdapter(mChapterList);
         recyclerView.setAdapter(adapter);
@@ -117,7 +119,7 @@ public class PracticeActivity extends AppCompatActivity {
 
     private void importChapter(){
         for(int i=1 ;i<=11;i++) {
-            SQLiteDatabase myDateBase = DBUtil.openDatabase(PracticeActivity.this);
+            SQLiteDatabase myDateBase = DBUtil.openDatabase(PracticeActivity.this.getActivity());
             String sql = "SELECT * FROM chapter WHERE chapter_num ="+i;
             String chapter_name="";
             try{
@@ -161,19 +163,8 @@ public class PracticeActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart(){
-       super.onStart();
-       updata_adapter();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                break;
-            default:
-        }
-        return true;
+    public void onDestroyView() {
+        super.onDestroyView();
+        mChapterList.clear();
     }
 }

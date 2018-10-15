@@ -23,7 +23,7 @@
                 android:id="@+id/book_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="书籍"
+                android:text="编译"
                 android:textSize="30dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="3dp"
@@ -31,12 +31,5 @@
                 />
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="3dp"
-            android:id="@+id/recycler_view_book"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
