@@ -15,24 +15,24 @@ OnSserverCallBack和OnCommonCallBack的父类
  */
 
 public abstract class HttpCallBack<T>  {
-    private Type mGenericSuperclass;
+  private Type mGenericSuperclass;
 
-    public HttpCallBack() {
-        Type genericSuperclass = getClass().getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            mGenericSuperclass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        } else {
-            mGenericSuperclass = Object.class;
-        }
+  public HttpCallBack() {
+    Type genericSuperclass = getClass().getGenericSuperclass();
+    if (genericSuperclass instanceof ParameterizedType) {
+      mGenericSuperclass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+    } else {
+      mGenericSuperclass = Object.class;
     }
+  }
 
-    public abstract void onResolve(T t);
+  public abstract void onResolve(T t);
 
-    public abstract void onFailed(int code, String msg);
+  public abstract void onFailed(int code, String msg);
 
-    public Type getType() {
-        return mGenericSuperclass;
-    }
+  public Type getType() {
+    return mGenericSuperclass;
+  }
 
 
 }

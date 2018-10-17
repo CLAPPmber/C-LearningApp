@@ -3,9 +3,11 @@ package com.bignerdranch.android.CLearning;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -34,10 +36,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.CacheTool.ACache;
+import com.HttpTool.API;
+import com.HttpTool.FeedBack;
+import com.HttpTool.HttpUtil;
+import com.HttpTool.OnServerCallBack;
+import com.HttpTool.User;
+import com.Type.Retprorec;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
+import static java.lang.Integer.valueOf;
 
 /**
  * A login screen that offers login via email/password.
@@ -45,7 +58,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
-
+    private ACache acache;//缓存框架
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -69,10 +82,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private CheckBox checkboxremember;
-
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        mContext = this;
+        acache=ACache.get(this);//创建ACache组件
+        String User = acache.getAsString("Login"); //通过缓存判断是否已经登录，已登录就直接跳到home页面
+        if(User!=null){
+            Intent intent=new Intent(LoginActivity.this,HomePage.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_login);
         // Set up the login form.
         pref= PreferenceManager.getDefaultSharedPreferences(this);
@@ -82,6 +106,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView = (EditText) findViewById(R.id.password);
         checkboxremember=(CheckBox)findViewById(R.id.checkbox_remember);
         boolean isRemember=pref.getBoolean("checkbox_remember",false);
+
         if (isRemember){
             //将账户和密码设置到文本框
             String account=pref.getString("account","");
@@ -94,8 +119,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+//                    attemptLogin();
+                    //登录
+                    Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
                     return true;
+
                 }
                 return false;
             }
@@ -105,30 +133,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                String account=mEmailView.getText().toString();
-                String password=mPasswordView.getText().toString();
-                //如果账号是admin且密码是123456，就认为登录成功
-                if(account.equals("admin")&&password.equals("123456")){
-                    editor=pref.edit();
-                    if(checkboxremember.isChecked()){
-                        //检查复选框是否被选中
-                        editor.putBoolean("checkbox_remember",true);
-                        editor.putString("account",account);
-                        editor.putString("password",password);
-                    }else {
-                        editor.clear();
-                    }
-                    editor.apply();
-                    Intent intent=new Intent(LoginActivity.this,MainLayout.class);
-                    startActivity(intent);
-                    finish();
-
-                }else{
-                    Toast.makeText(LoginActivity.this,"用户账号或密码错误",Toast.LENGTH_SHORT).show();
-                }
+                //登录
+                Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
             }
         });
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -390,5 +398,62 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+
+    /**
+     * 根据账号和密码登录
+     * @param Account 账号
+     * @param Password 密码
+     */
+    public void Login(String Account,String Password){
+
+        final String account = Account;
+        final String password = Password;
+
+            User use = new User(Account,Password); //查询的用户账号,密码随意
+
+            HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec,new Gson().toJson(use),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
+
+                @Override
+                public void onSuccess(List<Retprorec> data) {//操作成功
+
+                    Looper.prepare();
+
+                    Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
+
+                    editor=pref.edit();
+                    if(checkboxremember.isChecked()){
+                        //检查复选框是否被选中
+                        editor.putBoolean("checkbox_remember",true);
+                        editor.putString("account",account);
+                        editor.putString("password",password);
+                    }else {
+                        editor.clear();
+                    }
+                    editor.apply();
+
+                    Intent intent=new Intent(LoginActivity.this,HomePage.class);
+                    acache.put("Login",account,ACache.TIME_HOUR*6); //登录成功后将账号存储到缓存中，供全局使用,登录时间为6小时，过期将重新登录
+                    startActivity(intent);
+
+                    finish();
+
+                    Looper.loop();
+
+                }
+
+                @Override
+                public void onFailure(int code, String msg) {
+                    Looper.prepare();
+                    if (code == 501){
+                        Toast.makeText(mContext, "账号或密码不正确", Toast.LENGTH_SHORT).show();
+                    }
+                    if (code == 502 ){
+                        Toast.makeText(mContext,"后端数据解析出错",Toast.LENGTH_SHORT).show();
+                    }
+                    Looper.loop();
+                }
+            });
+        }
 }
 

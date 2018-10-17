@@ -21,53 +21,53 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
-    private Context mContext ;
-    private List<Book> mBooks;
+  private Context mContext ;
+  private List<Book> mBooks;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        CardView mCardView;
-        ImageView bookImg;
-        TextView bookName;
-        public ViewHolder(View view){
-            super(view);
-            bookImg = (ImageView)view.findViewById(R.id.book_image);
-            bookName = (TextView) view.findViewById(R.id.book_name);
-        }
+  static class ViewHolder extends RecyclerView.ViewHolder{
+    CardView mCardView;
+    ImageView bookImg;
+    TextView bookName;
+    public ViewHolder(View view){
+      super(view);
+      bookImg = (ImageView)view.findViewById(R.id.book_image);
+      bookName = (TextView) view.findViewById(R.id.book_name);
     }
-    public BookAdapter(List<Book> books){
-        mBooks = books;
+  }
+  public BookAdapter(List<Book> books){
+    mBooks = books;
+  }
+
+  @Override
+  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    if(mContext == null){
+      mContext = parent.getContext();
     }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(mContext == null){
-            mContext = parent.getContext();
-        }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.book_item,parent,false);
-        final ViewHolder holder = new ViewHolder(view);
-        holder.bookImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Book book = mBooks.get(position);
-                Intent GotoBookDirectory = new Intent(mContext, BookDirectory.class);
-                GotoBookDirectory.putExtra("bookname",book.getBookName());
-                GotoBookDirectory.putExtra("correct",book.getCorrect());
-                mContext.startActivity(GotoBookDirectory);
-            }
-        });
-        return  holder;
-}
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    View view = LayoutInflater.from(mContext).inflate(R.layout.book_item,parent,false);
+    final ViewHolder holder = new ViewHolder(view);
+    holder.bookImg.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        int position = holder.getAdapterPosition();
         Book book = mBooks.get(position);
-        holder.bookName.setText(book.getBookName().split("\\.")[0]);
-        Glide.with(mContext).load(book.getImgId()).into(holder.bookImg);
-    }
+        Intent GotoBookDirectory = new Intent(mContext, BookDirectory.class);
+        GotoBookDirectory.putExtra("bookname",book.getBookName());
+        GotoBookDirectory.putExtra("correct",book.getCorrect());
+        mContext.startActivity(GotoBookDirectory);
+      }
+    });
+    return  holder;
+  }
 
-    @Override
-    public int getItemCount() {
-        return mBooks.size();
-    }
+  @Override
+  public void onBindViewHolder(ViewHolder holder, int position) {
+    Book book = mBooks.get(position);
+    holder.bookName.setText(book.getBookName().split("\\.")[0]);
+    Glide.with(mContext).load(book.getImgId()).into(holder.bookImg);
+  }
+
+  @Override
+  public int getItemCount() {
+    return mBooks.size();
+  }
 }

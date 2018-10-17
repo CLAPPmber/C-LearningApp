@@ -20,53 +20,53 @@ import java.util.List;
 
 public class VedioListAdapter extends RecyclerView.Adapter<VedioListAdapter.ViewHolder>{
 
-    private Context mContext ;
-    private List<Vedio> mVedioList;
+  private Context mContext ;
+  private List<Vedio> mVedioList;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        LinearLayout ListItem;
-        TextView ListItemName;
-        public ViewHolder(View view){
-            super(view);
-            ListItem = (LinearLayout)view.findViewById(R.id.vedio_list_item);
-            ListItemName = (TextView) view.findViewById(R.id.vedio_list_item_name);
-        }
+  static class ViewHolder extends RecyclerView.ViewHolder{
+    LinearLayout ListItem;
+    TextView ListItemName;
+    public ViewHolder(View view){
+      super(view);
+      ListItem = (LinearLayout)view.findViewById(R.id.vedio_list_item);
+      ListItemName = (TextView) view.findViewById(R.id.vedio_list_item_name);
     }
+  }
 
-    public VedioListAdapter(List<Vedio> vedioCardList){
-        mVedioList = vedioCardList;
+  public VedioListAdapter(List<Vedio> vedioCardList){
+    mVedioList = vedioCardList;
+  }
+
+  @Override
+  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    if(mContext == null){
+      mContext = parent.getContext();
     }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        if(mContext == null){
-            mContext = parent.getContext();
-        }
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.vedio_list_item,parent,false);
-        final ViewHolder holder = new ViewHolder(view);
-        holder.ListItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Vedio vedio = mVedioList.get(position);
-                String video =  vedio.getUrl();
-                Intent openVideo = new Intent(Intent.ACTION_VIEW);
-                openVideo.setDataAndType(Uri.parse(video), "video/*");
-                mContext.startActivity(openVideo);
-            }
-        });
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    View view = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.vedio_list_item,parent,false);
+    final ViewHolder holder = new ViewHolder(view);
+    holder.ListItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        int position = holder.getAdapterPosition();
         Vedio vedio = mVedioList.get(position);
-        holder.ListItemName.setText(vedio.getVedioName());
-    }
+        String video =  vedio.getUrl();
+        Intent openVideo = new Intent(Intent.ACTION_VIEW);
+        openVideo.setDataAndType(Uri.parse(video), "video/*");
+        mContext.startActivity(openVideo);
+      }
+    });
+    return holder;
+  }
 
-    @Override
-    public int getItemCount() {
-        return mVedioList.size();
-    }
+  @Override
+  public void onBindViewHolder(ViewHolder holder, int position) {
+    Vedio vedio = mVedioList.get(position);
+    holder.ListItemName.setText(vedio.getVedioName());
+  }
+
+  @Override
+  public int getItemCount() {
+    return mVedioList.size();
+  }
 }

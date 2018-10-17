@@ -9,6 +9,11 @@ public class User {
         this.password = password;
     }
 
+    public User(String account) {
+        this.account = account;
+        this.password = "";
+    }
+
     public String getAccount() {
         return account;
     }

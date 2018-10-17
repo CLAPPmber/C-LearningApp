@@ -5,27 +5,27 @@ package com.Type;
  */
 
 public class Vedio {
-    private String VedioName;
-    private String Url;
+  private String VedioName;
+  private String Url;
 
-    public Vedio(String vedioName, String url) {
-        VedioName = vedioName;
-        Url = url;
-    }
+  public Vedio(String vedioName, String url) {
+    VedioName = vedioName;
+    Url = url;
+  }
 
-    public String getVedioName() {
-        return VedioName;
-    }
+  public String getVedioName() {
+    return VedioName;
+  }
 
-    public void setVedioName(String vedioName) {
-        VedioName = vedioName;
-    }
+  public void setVedioName(String vedioName) {
+    VedioName = vedioName;
+  }
 
-    public String getUrl() {
-        return Url;
-    }
+  public String getUrl() {
+    return Url;
+  }
 
-    public void setUrl(String url) {
-        Url = url;
-    }
+  public void setUrl(String url) {
+    Url = url;
+  }
 }

@@ -48,189 +48,189 @@ import okhttp3.Response;
 
 public class MainLayout extends AppCompatActivity{
 
-    private DrawerLayout mDrawerLayout;
-    private int[] imgIdArray = {R.drawable.imgb1, R.drawable.imgb2, R.drawable.imgb3};
-    private SliderLayout mDemoSlider  ;
-    private ImageView Draweropen;
-    private ImageButton book_button;
-    private ImageButton vedio_button;
-    private ImageButton practice_button;
-    private ImageButton user_button;
-    private Cluser cluser;
-    public static Context mContext;
-    private String responseData;
-                public static final int UPDATE_TEXT = 1;
-                private Handler handler = new Handler(){
-                    public void handleMessage(Message msg){
-                        switch(msg.what){
-                case UPDATE_TEXT:
-                    Toast.makeText(MainLayout.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_layout);
-        Draweropen = (ImageView) findViewById(R.id.DrawerOpen);
-        slidepicture();
-        book_button = (ImageButton)findViewById(R.id.book_button);
-        vedio_button = (ImageButton)findViewById(R.id.vedio_button);
-        practice_button = (ImageButton)findViewById(R.id.practice_button);
-        user_button = (ImageButton)findViewById(R.id.user_button);
-        book_button.setOnClickListener(onclick);
-        vedio_button.setOnClickListener(onclick);
-        practice_button.setOnClickListener(onclick);
-        user_button.setOnClickListener(onclick);
+  private DrawerLayout mDrawerLayout;
+  private int[] imgIdArray = {R.drawable.imgb1, R.drawable.imgb2, R.drawable.imgb3};
+  private SliderLayout mDemoSlider  ;
+  private ImageView Draweropen;
+  private ImageButton book_button;
+  private ImageButton vedio_button;
+  private ImageButton practice_button;
+  private ImageButton user_button;
+  private Cluser cluser;
+  public static Context mContext;
+  private String responseData;
+  public static final int UPDATE_TEXT = 1;
+  private Handler handler = new Handler(){
+    public void handleMessage(Message msg){
+      switch(msg.what){
+        case UPDATE_TEXT:
+          Toast.makeText(MainLayout.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+          break;
+        default:
+          break;
+      }
     }
-        View.OnClickListener onclick = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.book_button:
-                        Intent intentbook = new Intent(MainLayout.this,BookActivity.class);
-                        startActivity(intentbook);
-                        break;
-                    case R.id.vedio_button:
-                        Intent intentvedio = new Intent(MainLayout.this,vedio_card.class);
-                        startActivity(intentvedio);
-                        break;
-                    case R.id.practice_button:
+  };
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main_layout);
+    Draweropen = (ImageView) findViewById(R.id.DrawerOpen);
+    slidepicture();
+    book_button = (ImageButton)findViewById(R.id.book_button);
+    vedio_button = (ImageButton)findViewById(R.id.vedio_button);
+    practice_button = (ImageButton)findViewById(R.id.practice_button);
+    user_button = (ImageButton)findViewById(R.id.user_button);
+    book_button.setOnClickListener(onclick);
+    vedio_button.setOnClickListener(onclick);
+    practice_button.setOnClickListener(onclick);
+    user_button.setOnClickListener(onclick);
+  }
+  View.OnClickListener onclick = new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+      switch (view.getId()) {
+        case R.id.book_button:
+          Intent intentbook = new Intent(MainLayout.this,BookActivity.class);
+          startActivity(intentbook);
+          break;
+        case R.id.vedio_button:
+          Intent intentvedio = new Intent(MainLayout.this,vedio_card.class);
+          startActivity(intentvedio);
+          break;
+        case R.id.practice_button:
 
-                        Intent intentparctice = new Intent(MainLayout.this,PracticeActivity.class);
-                        startActivity(intentparctice);
-                        break;
-                    case R.id.user_button:
-                        Toast.makeText(MainLayout.this, "User", Toast.LENGTH_SHORT).show();
-                        testpost();
+          Intent intentparctice = new Intent(MainLayout.this,PracticeActivity.class);
+          startActivity(intentparctice);
+          break;
+        case R.id.user_button:
+          Toast.makeText(MainLayout.this, "User", Toast.LENGTH_SHORT).show();
+          testpost();
 
-                }
-            }
-        };
-       public void slidepicture() {
-           mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-           mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-           for (int i = 0; i < imgIdArray.length; i++) {
-               TextSliderView textSliderView = new TextSliderView(this);
-               textSliderView
-                       .image(imgIdArray[i])//image方法可以传入图片url、资源id、File
-                       .setScaleType(BaseSliderView.ScaleType.Fit);//图片缩放类型
-               textSliderView.bundle(new Bundle());
-               textSliderView.getBundle().putString("extra", "imgb" + i);//传入参数
-               mDemoSlider.addSlider(textSliderView);//添加一个滑动页面
-           }
-           mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);//滑动动画
+      }
+    }
+  };
+  public void slidepicture() {
+    mDemoSlider = (SliderLayout) findViewById(R.id.slider);
+    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    for (int i = 0; i < imgIdArray.length; i++) {
+      TextSliderView textSliderView = new TextSliderView(this);
+      textSliderView
+              .image(imgIdArray[i])//image方法可以传入图片url、资源id、File
+              .setScaleType(BaseSliderView.ScaleType.Fit);//图片缩放类型
+      textSliderView.bundle(new Bundle());
+      textSliderView.getBundle().putString("extra", "imgb" + i);//传入参数
+      mDemoSlider.addSlider(textSliderView);//添加一个滑动页面
+    }
+    mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);//滑动动画
 //        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);//默认指示器样式
-           mDemoSlider.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator2));//自定义指示器
-           mDemoSlider.setCustomAnimation(new DescriptionAnimation());//设置图片描述显示动画
-           mDemoSlider.setDuration(4000);//设置滚动时间，也是计时器时间
-           Draweropen.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   mDrawerLayout.openDrawer(GravityCompat.START);
+    mDemoSlider.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator2));//自定义指示器
+    mDemoSlider.setCustomAnimation(new DescriptionAnimation());//设置图片描述显示动画
+    mDemoSlider.setDuration(4000);//设置滚动时间，也是计时器时间
+    Draweropen.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        mDrawerLayout.openDrawer(GravityCompat.START);
 
-               }
-           });
+      }
+    });
 
-       }
-    class GetTestjson extends Thread{
-        public void run(){
-            try{
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url("http://www.ish2b.cn:9090/gsqls")
-                        .build();
-                Response response = client.newCall(request).execute();
-                String vediojson = response.body().string();
-                Getcardata(vediojson);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
+  }
+  class GetTestjson extends Thread{
+    public void run(){
+      try{
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://www.ish2b.cn:9090/gsqls")
+                .build();
+        Response response = client.newCall(request).execute();
+        String vediojson = response.body().string();
+        Getcardata(vediojson);
+      }catch (Exception e){
+        e.printStackTrace();
+      }
     }
-    //将json格式转化为String
-    public  void Getcardata(String vediojson){
-        try{
-            JSONArray jsonArray = new JSONArray(vediojson);
-            for(int i = 0 ;i<jsonArray.length();i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                cluser = new Cluser(jsonObject.getString("account"),jsonObject.getString("password"));
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+  }
+  //将json格式转化为String
+  public  void Getcardata(String vediojson){
+    try{
+      JSONArray jsonArray = new JSONArray(vediojson);
+      for(int i = 0 ;i<jsonArray.length();i++){
+        JSONObject jsonObject = jsonArray.getJSONObject(i);
+        cluser = new Cluser(jsonObject.getString("account"),jsonObject.getString("password"));
+      }
+    }catch (Exception e){
+      e.printStackTrace();
     }
-    //return mContext
-    public static Context getContext() {
-        return mContext;
-    }
-    //测试Get请求
-    public void testget(){
-        //进行Get请求
-        HttpUtil.sendOkHttpGetRequest(API.Url_GetJsons, new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
-            @Override
-            public void onSuccess(List<User> data) {
-                Log.e("test",data.get(0).account);
-                Message message = new Message();
-                message.what = UPDATE_TEXT;
-                message.obj = data.get(0).account;
-                handler.sendMessage(message);
-            }
-            @Override
-            public void onFailure(int code, String msg) {
+  }
+  //return mContext
+  public static Context getContext() {
+    return mContext;
+  }
+  //测试Get请求
+  public void testget(){
+    //进行Get请求
+    HttpUtil.sendOkHttpGetRequest(API.Url_GetJsons, new OnServerCallBack<FeedBack<List<User>>,List<User>>(){
+      @Override
+      public void onSuccess(List<User> data) {
+        Log.e("test",data.get(0).account);
+        Message message = new Message();
+        message.what = UPDATE_TEXT;
+        message.obj = data.get(0).account;
+        handler.sendMessage(message);
+      }
+      @Override
+      public void onFailure(int code, String msg) {
 
-            }
-        });
-    }
-    //测试Post请求
-    public void testpost(){
-        User use = new User("userone","123123");
-        List<User> uses = new ArrayList<>();
-        uses.add(use);
-        uses.add(use);
-        HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec,new Gson().toJson(use),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
-            @Override
-                public void onSuccess(List<Retprorec> data) {
-                if (data == null){
-                    Log.e("data null","data null");
-                    return;
-                }
-                    Log.e("chapter_num",String.valueOf(data.get(0).chapter_num));
-                    Log.e("chapter_rec",String.valueOf(data.get(0).chapter_rec));
-                    Message message = new Message();
-                    message.what = UPDATE_TEXT;
-                    message.obj = data;
-                    handler.sendMessage(message);
-            }
-            @Override
-            public void onFailure(int code, String msg) {
-                //操作错误
-            }
-        });
-     }
-    //测试数据库操作
-    public void testsql(){
-        SQLiteDatabase myDateBase = DBUtil.openDatabase(MainLayout.this);
-        String sql = "SELECT * FROM chapter";
-        try{
-            Cursor c = myDateBase.rawQuery(sql,null);
-            if (  c.moveToFirst()){
-                do{
-                    String getname = c.getString(c.getColumnIndex("chapter_name"));
-                    Log.e("sql",getname);
-                    Toast.makeText(MainLayout.this,getname,Toast.LENGTH_LONG).show();
-                }while (c.moveToNext());
-            }
-            if (!c.isClosed()){
-                c.close();
-            }
-            if(myDateBase.isOpen()){
-                myDateBase.close();
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+      }
+    });
+  }
+  //测试Post请求
+  public void testpost(){
+    User use = new User("userone","123123");
+    List<User> uses = new ArrayList<>();
+    uses.add(use);
+    uses.add(use);
+    HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec,new Gson().toJson(use),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
+      @Override
+      public void onSuccess(List<Retprorec> data) {
+        if (data == null){
+          Log.e("data null","data null");
+          return;
         }
+        Log.e("chapter_num",String.valueOf(data.get(0).chapter_num));
+        Log.e("chapter_rec",String.valueOf(data.get(0).chapter_rec));
+        Message message = new Message();
+        message.what = UPDATE_TEXT;
+        message.obj = data;
+        handler.sendMessage(message);
+      }
+      @Override
+      public void onFailure(int code, String msg) {
+        //操作错误
+      }
+    });
+  }
+  //测试数据库操作
+  public void testsql(){
+    SQLiteDatabase myDateBase = DBUtil.openDatabase(MainLayout.this);
+    String sql = "SELECT * FROM chapter";
+    try{
+      Cursor c = myDateBase.rawQuery(sql,null);
+      if (  c.moveToFirst()){
+        do{
+          String getname = c.getString(c.getColumnIndex("chapter_name"));
+          Log.e("sql",getname);
+          Toast.makeText(MainLayout.this,getname,Toast.LENGTH_LONG).show();
+        }while (c.moveToNext());
+      }
+      if (!c.isClosed()){
+        c.close();
+      }
+      if(myDateBase.isOpen()){
+        myDateBase.close();
+      }
+    }catch (Exception e){
+      e.printStackTrace();
     }
+  }
 }

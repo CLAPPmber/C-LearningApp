@@ -6,4 +6,5 @@ public class API {
     public static final String Url_GetJson = "http://www.ish2b.cn/clapp/gsql";
     public static final String Url_GetAllRec = "http://www.ish2b.cn/clapp/getallrec";
     public static final String Url_Prarecord = "http://www.ish2b.cn/clapp/prarecord";
+    public static final String Url_Login = "http://www.ish2b.cn/clapp/login";
 }

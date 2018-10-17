@@ -31,17 +31,17 @@
             android:name=".PracticingActivity"
             android:label="习题" />
         <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".RegistActivity" />
-        <activity android:name=".HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".RegistActivity" />
+        <activity android:name=".HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+
         </activity>
     </application>
 

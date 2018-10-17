@@ -1,16 +1,27 @@
 package com.bignerdranch.android.CLearning;
 
 import android.graphics.Color;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.HttpTool.API;
+import com.HttpTool.FeedBack;
+import com.HttpTool.HttpUtil;
+import com.HttpTool.OnServerCallBack;
+import com.HttpTool.User;
+import com.Type.Chap;
 import com.Type.NotSlidingViewPage;
+import com.Type.Record;
+import com.Type.Retprorec;
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +146,7 @@ public class HomePage extends AppCompatActivity  implements BottomNavigationBar.
     public void onPageScrollStateChanged(int state) {
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

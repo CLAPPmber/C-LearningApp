@@ -13,8 +13,8 @@ public class Chap {
     public Chap(String account,int progress[]) {
         this.account = account;
         for(int i=1;i<=11;i++){
-             record[i].chapter_num=i;
-             record[i].question_num=progress[i];
+            record[i].chapter_num=i;
+            record[i].question_num=progress[i];
         }
 
     }
