@@ -1,0 +1,149 @@
+Part 1.The Environment------/1
+1.Set Yourself Up for Easy Compilation . . . . ./3
+Use a Package Manager/4
+Compiling C with Windows/6
+POSIX for Windows/6
+Compiling C with POSIX/7
+Compiling C Without POSIX/8
+Which Way to the Library?/9 
+A Few of My Favorite Flags/10
+Paths/12
+Runtime Linking/14
+Using Makefiles/15
+Setting Variables/16
+The Rules/18
+Using Libraries from Source/21
+Using Libraries from Source (Even if Your Sysadmin Doesn’t Want You To) /23
+Compiling C Programs via Here Document/24 
+Include Header Files from the Command Line/25
+The Unified Header/25
+Here Documents/26
+Compiling from stdin/27
+2.Debug, Test, Document . . . . ./29
+Using a Debugger/29
+GDB Variables/32
+Print Your Structures/34
+Using Valgrind to Check for Errors/37
+Unit Testing/39
+Using a Program as a Library/41
+Coverage/42
+Interweaving Documentation/43
+Doxygen/44
+Literate Code with CWEB/45
+Error Checking/47
+What Is the User’s Involvement in the Error?/47
+The Context in Which the User Is Working/49
+How Should the Error Indication Be Returned?/50
+3.Packaging Your Project . . . . ./53
+The Shell/54
+Replacing Shell Commands with Their Outputs/54
+Use the Shell’s for Loops to Operate on a Set of Files/56
+Test for Files/57
+fc/60
+Makefiles vs. Shell Scripts/62
+Packaging Your Code with Autotools/64
+An Autotools Demo/66
+Describing the Makefile with makefile.am/69
+The configure Script/73
+4.Version Control . . . . . . . . . . ./77
+Changes via diff/78
+Git’s Objects/79
+The Stash/82
+Trees and Their Branches/83
+Merging/84
+The Rebase/86
+Remote Repositories/87
+5.Playing Nice with Others . . . . . . . ./89
+The Process/89
+Writing to Be Read by Nonnatives/89
+The Wrapper Function/90
+Smuggling Data Structures Across the Border/91
+Linking/92
+Python Host/93
+Compiling and Linking/94
+The Conditional Subdirectory for Automake/94
+Distutils Backed with Autotools/96
+Part II. The Language -------------/99
+6.Your Pal the Pointer . . . . . . . . ./101
+Automatic, Static, and Manual Memory/101
+Persistent State Variables/103
+Pointers Without malloc/105
+Structures Get Copied, Arrays Get Aliased/106
+malloc and Memory-Twiddling/109
+The Fault Is in Our Stars/110
+All the Pointer Arithmetic You Need to Know/111
+7.C Syntax You Can Ignore . . . . . . ./115
+Don’t Bother Explicitly Returning from main/116
+Let Declarations Flow/116
+Set Array Size at Runtime/118
+Cast Less/119
+Enums and Strings/120
+Labels, gotos, switches, and breaks/122 
+goto Considered/122 
+switch/123
+Deprecate Float/126
+8.Obstacles and Opportunity . . . . . . . ./131
+Cultivate Robust and Flourishing Macros/131
+Preprocessor Tricks/135
+Linkage with static and extern/137
+Declare Externally Linked Elements Only in Header Files/139
+The const Keyword/141 
+Noun-Adjective Form/142
+Tension/143 
+Depth/144
+The char const ** Issue/145
+9.Text . . . . . . . . . . ./149
+Making String Handling Less Painful with asprintf/149
+Security/150
+Constant Strings/151
+Extending Strings with asprintf/152
+A P?an to strtok/154
+Unicode/158
+The Encoding for C Code/160
+Unicode Libraries/161
+The Sample Code/162
+10.Better Structures . . . . . ./165
+Compound Literals/166
+Initialization via Compound Literals/167
+Variadic Macros/167
+Safely Terminated Lists/168
+Foreach/169
+Vectorize a Function/170
+Designated Initializers/171
+Initialize Arrays and Structs with Zeros/173
+Typedefs Save the Day/174
+A Style Note/176
+Return Multiple Items from a Function/177
+Reporting Errors/178
+Flexible Function Inputs/180
+Declare Your Function as printf-Style/181
+Optional and Named Arguments/183
+Polishing a Dull Function/185
+The Void Pointer and the Structures It Points To/190
+Functions with Generic Inputs/190
+Generic Structures/194
+11.Object-Oriented Programming in C . . . . . . ./199
+What You Don’t Get (and Why You Won’t Miss It)/200
+Scope/200
+Overloaded with Operator Overloading/203
+Extending Structures and Dictionaries/207
+Extending a Structure/208
+Implementing a Dictionary/212
+Base Your Code on Pointers to Objects/216
+Functions in Your Structs/217
+Count References/221
+Example: A Substring Object/222
+An Agent-Based Model of Group Formation/226
+2.Libraries . . . . . . ./233
+GLib/233
+POSIX/234
+Using mmap for Gigantic Data Sets/234
+Easy Threading with Pthreads/236
+The GNU Scientific Library/244
+SQLite/246
+The Queries/247 
+libxml and cURL/248
+Epilogue . . . . . /253
+Glossary . . . . . /255
+Bibliography . . . /259
+Index . . . . . . ./261

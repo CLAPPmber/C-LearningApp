@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bignerdranch.android.CLearning">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/appinc"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/appinc"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainLayout" />
+        <!-- <activity -->
+        <!-- android:name=".PracticeActivity" -->
+        <!-- android:label="教材同步试题" /> -->
+        <!-- <activity -->
+        <!-- android:name=".BookActivity" -->
+        <!-- android:label="相关书籍" /> -->
+        <!-- <activity -->
+        <!-- android:name=".vedio" -->
+        <!-- android:label="视频列表" /> -->
+        <activity android:name="com.test.file.BookDetail" />
+        <activity
+            android:name="com.test.file.BookDirectory"
+            android:hardwareAccelerated="false" />
+        <activity android:name="com.test.file.PdfBook" />
+        <!-- <activity android:name=".vedio_card" /> -->
+        <activity android:name=".VedioList" />
+        <activity
+            android:name=".PracticingActivity"
+            android:label="习题" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ChangPasswordActivity" />
+        <activity
+            android:name=".HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".RegistActivity"></activity>
+    </application>
+
+</manifest>
