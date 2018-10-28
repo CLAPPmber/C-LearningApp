@@ -82,7 +82,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private CheckBox checkboxremember;
+<<<<<<< HEAD
     private TextView register_textview;
+=======
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
     private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (AutoCompleteTextView) findViewById(R.id.account);
         populateAutoComplete();
 
+<<<<<<< HEAD
 
         register_textview=(TextView)findViewById(R.id.register);
         //从登陆页面跳转到注册页面
@@ -116,6 +120,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+=======
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
         mPasswordView = (EditText) findViewById(R.id.password);
         checkboxremember=(CheckBox)findViewById(R.id.checkbox_remember);
         boolean isRemember=pref.getBoolean("checkbox_remember",false);
@@ -131,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+<<<<<<< HEAD
                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
 //                    attemptLogin();
                     //登录
@@ -138,6 +145,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return true;
 
                }
+=======
+                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+//                    attemptLogin();
+                    //登录
+                    Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
+                    return true;
+
+                }
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
                 return false;
             }
         });
@@ -148,7 +164,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
                 //登录
                 Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
             }
         });
         mLoginFormView = findViewById(R.id.login_form);

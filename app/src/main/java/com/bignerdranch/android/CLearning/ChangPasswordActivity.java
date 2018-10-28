@@ -1,5 +1,6 @@
 package com.bignerdranch.android.CLearning;
 
+<<<<<<< HEAD
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -19,11 +20,18 @@ public class ChangPasswordActivity extends AppCompatActivity {
   private Button cpsaveButton;
   private AutoCompleteTextView cp_inputpassword1;
   private AutoCompleteTextView cp_inputpassword2;
+=======
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class ChangPasswordActivity extends AppCompatActivity {
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_chang_password);
+<<<<<<< HEAD
     cpback = (ImageView) findViewById(R.id.Chang_password_back);
     cpback.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -64,5 +72,7 @@ public class ChangPasswordActivity extends AppCompatActivity {
 
       }
     });
+=======
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
   }
 }
