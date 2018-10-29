@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C2DBDE"
     tools:context="com.bignerdranch.android.CLearning.PracticingActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -70,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="12dp"
             android:textSize="17sp"
             android:text="此处是题目" />
 
@@ -84,15 +85,15 @@
 
         <Button
             android:id="@+id/button_a"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="12dp"
-            android:background="?attr/colorPrimary"
-            android:gravity="center"
+            android:textSize="25sp"
+            android:background="#C2DBDE"
             android:text="A"
-            android:textSize="25sp" />
+            />
 
         <TextView
             android:id="@+id/option_a"
@@ -111,13 +112,12 @@
 
         <Button
             android:id="@+id/button_b"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:background="?attr/colorPrimary"
-            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="#C2DBDE"
             android:text="B"
             android:textSize="25sp" />
 
@@ -138,13 +138,12 @@
 
         <Button
             android:id="@+id/button_c"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="12dp"
-            android:background="?attr/colorPrimary"
-            android:gravity="center"
+            android:background="#C2DBDE"
             android:text="C"
             android:textSize="25sp" />
 
@@ -165,13 +164,12 @@
 
         <Button
             android:id="@+id/button_d"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="12dp"
-            android:background="?attr/colorPrimary"
-            android:gravity="center"
+            android:background="#C2DBDE"
             android:text="D"
             android:textSize="25sp" />
 
