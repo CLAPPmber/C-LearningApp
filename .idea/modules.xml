@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/C-LearningApp.iml" filepath="$PROJECT_DIR$/C-LearningApp.iml" />
+=======
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/C-LearningApp-master.iml" filepath="$PROJECT_DIR$/C-LearningApp-master.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/CLearning.iml" filepath="$PROJECT_DIR$/CLearning.iml" />
+>>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
+>>>>>>> 6976f4d5e16e4c8b7ba66f198af6630752692cb5
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library1/library1.iml" filepath="$PROJECT_DIR$/library1/library1.iml" />
     </modules>
