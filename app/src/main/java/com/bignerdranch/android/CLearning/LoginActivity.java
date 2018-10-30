@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private CheckBox checkboxremember;
+    private TextView register_textview;
     private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +104,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (AutoCompleteTextView) findViewById(R.id.account);
         populateAutoComplete();
 
+
+        register_textview=(TextView)findViewById(R.id.register);
+        //从登陆页面跳转到注册页面
+        register_textview.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         mPasswordView = (EditText) findViewById(R.id.password);
         checkboxremember=(CheckBox)findViewById(R.id.checkbox_remember);
         boolean isRemember=pref.getBoolean("checkbox_remember",false);
@@ -118,13 +131,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+               if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
 //                    attemptLogin();
                     //登录
-                    Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
-                    return true;
+                Login(mEmailView.getText().toString(),mPasswordView.getText().toString());
+                return true;
 
-                }
+               }
                 return false;
             }
         });

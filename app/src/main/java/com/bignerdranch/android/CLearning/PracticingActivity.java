@@ -184,9 +184,9 @@ public class PracticingActivity extends AppCompatActivity {
      onSuccess(fadata data) 这里的fbdata跟前面的fadata是一样的，然后data就是实际返回的数据
      onFailure(code ,msg) code:返回的状态码 msg:返回的消息
      */
-    HttpUtil.sendOkHttpPostRequest(API.Url_Prarecord,new Gson().toJson(chaps),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
+    HttpUtil.sendOkHttpPostRequest(API.Url_Prarecord,new Gson().toJson(chaps),new OnServerCallBack<FeedBack<String>,String>(){
       @Override
-      public void onSuccess(List<Retprorec> data) {//操作成功
+      public void onSuccess(String data) {//操作成功
         Looper.prepare();
 //        Toast.makeText(PracticingActivity.this,"更新记录成功",Toast.LENGTH_SHORT).show();
         Looper.loop();
@@ -194,7 +194,7 @@ public class PracticingActivity extends AppCompatActivity {
       @Override
       public void onFailure(int code, String msg) {
         Looper.prepare();
-//        Toast.makeText(PracticingActivity.this,"更新记录失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(PracticingActivity.this,"更新记录失败",Toast.LENGTH_SHORT).show();
         Looper.loop();
         //操作错误
       }
