@@ -68,7 +68,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHold
   public void onBindViewHolder(ViewHolder holder, int position) {
     Chapter chapter = mChapters.get(position);
     holder.chaptername.setText(chapter.getchaptername());
-    holder.quesnum.setText("进度： "+(chapter_data.get_chapter_progress(chapter.get_chapter_num())-1)+"/"+chapter_data.get_chapter_max_num(chapter.get_chapter_num()));
+    holder.quesnum.setText("进度： "+(chapter_data.get_chapter_progress(chapter.get_chapter_num()))+"/"+chapter_data.get_chapter_max_num(chapter.get_chapter_num()));
   }
 
   @Override
