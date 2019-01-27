@@ -425,10 +425,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             User use = new User(Account,Password); //查询的用户账号,密码随意
 
-            HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec,new Gson().toJson(use),new OnServerCallBack<FeedBack<List<Retprorec>>,List<Retprorec>>(){
+            HttpUtil.sendOkHttpPostRequest(API.Url_Login,new Gson().toJson(use),new OnServerCallBack<FeedBack<String>,String>(){
 
                 @Override
-                public void onSuccess(List<Retprorec> data) {//操作成功
+                public void onSuccess(String data) {//操作成功
 
                     Looper.prepare();
 
@@ -464,6 +464,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     if (code == 502 ){
                         Toast.makeText(mContext,"后端数据解析出错",Toast.LENGTH_SHORT).show();
                     }
+                    Toast.makeText(mContext,"登录失败",Toast.LENGTH_SHORT).show();
                     Looper.loop();
                 }
             });

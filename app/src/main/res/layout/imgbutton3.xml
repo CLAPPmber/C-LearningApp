@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="#00000000"
-              android:weightSum="1">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:weightSum="1">
 
-    <ImageButton
-        android:id="@+id/practice_button"
-        android:layout_width="90dp"
-        android:layout_height="92dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button_bg"
-        android:src="@drawable/img_pt"
-        android:layout_weight="0.60"/>
+  <ImageButton
+      android:id="@+id/practice_button"
+      android:layout_width="90dp"
+      android:layout_height="92dp"
+      android:layout_gravity="center"
+      android:background="@drawable/button_bg"
+      android:src="@drawable/img_pt"
+      android:layout_weight="0.60"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="练习"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:textSize="20dp"
-        android:textColor="#0C0B05"
-        />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="练习"
+      android:layout_gravity="center"
+      android:layout_marginTop="8dp"
+      android:textSize="20dp"
+      android:textColor="#0C0B05"
+      />
 </LinearLayout>

@@ -54,7 +54,7 @@ public class PracticingActivity extends AppCompatActivity {
   private String question_b="";
   private String question_c="";
   private String question_d="";
-
+  private ACache acache;
 
 
   @Override
@@ -68,6 +68,7 @@ public class PracticingActivity extends AppCompatActivity {
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setHomeAsUpIndicator(R.drawable.img_back);
     }
+    acache=ACache.get(this);//创建ACache组件
     button_a =(Button) findViewById(R.id.button_a);
     button_b =(Button) findViewById(R.id.button_b);
     button_c =(Button) findViewById(R.id.button_c);
@@ -194,6 +195,7 @@ public class PracticingActivity extends AppCompatActivity {
       @Override
       public void onFailure(int code, String msg) {
         Looper.prepare();
+
         Toast.makeText(PracticingActivity.this,"更新记录失败",Toast.LENGTH_SHORT).show();
         Looper.loop();
         //操作错误

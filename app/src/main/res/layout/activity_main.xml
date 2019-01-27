@@ -11,82 +11,82 @@
     android:background="@drawable/loginbg3">
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
+  <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="90sp"
+      android:layout_marginTop="10dp"
+      android:src="@drawable/logo"/>
+
+  <LinearLayout
+      android:id="@+id/linearlayout_Account"
+      android:paddingTop="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_Account"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="90sp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/logo"/>
+        android:text="Account:"
+        android:textSize="18sp"
+        android:textColor="#397FE9"
+        />
 
-    <LinearLayout
-        android:id="@+id/linearlayout_Account"
-        android:paddingTop="10dp"
-        android:layout_width="match_parent"
-     android:layout_height="wrap_content">
-
-      <TextView
-          android:id="@+id/text_Account"
-          android:layout_width="85dp"
-          android:layout_height="wrap_content"
-          android:text="Account:"
-          android:textSize="18sp"
-          android:textColor="#397FE9"
-          />
-
-        <EditText
-            android:id="@+id/edit_Account"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/Accounthint"
-            android:maxLength="15"
-            android:maxLines="1"
-            />
+    <EditText
+        android:id="@+id/edit_Account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/Accounthint"
+        android:maxLength="15"
+        android:maxLines="1"
+        />
 
 
-    </LinearLayout>
+  </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearlayout_Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+  <LinearLayout
+      android:id="@+id/linearlayout_Password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/text_Password"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:text="Password:"
-            android:textColor="#397FE9"
-            android:textSize="18sp"
-            android:background="@null"
-            />
+    <TextView
+        android:id="@+id/text_Password"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:textColor="#397FE9"
+        android:textSize="18sp"
+        android:background="@null"
+        />
 
-        <EditText
-            android:id="@+id/edit_Password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/Passwordthint"
-            android:inputType="textPassword"
-            android:maxLength="15"
-            android:maxLines="1"
-            />
+    <EditText
+        android:id="@+id/edit_Password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/Passwordthint"
+        android:inputType="textPassword"
+        android:maxLength="15"
+        android:maxLines="1"
+        />
 
-        <ToggleButton
-            android:id="@+id/isHPW"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:background="@drawable/eye"
-            android:textOff=""
-            android:textOn=""
-            />
-    </LinearLayout>
+    <ToggleButton
+        android:id="@+id/isHPW"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:background="@drawable/eye"
+        android:textOff=""
+        android:textOn=""
+        />
+  </LinearLayout>
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
     <CheckBox
         android:layout_marginTop="5dp"
         android:id="@+id/checkbox_remember"
@@ -105,15 +105,15 @@
         android:clickable="true"
         android:text="注册账号"/>
 
-</LinearLayout>
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/login2"
-        android:text="登录"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        />
+  </LinearLayout>
+  <Button
+      android:id="@+id/button_login"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:layout_marginTop="10sp"
+      android:background="@drawable/login2"
+      android:text="登录"
+      android:textSize="18sp"
+      android:textColor="#FFFFFF"
+      />
 </LinearLayout>

@@ -61,64 +61,66 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="账号:"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="#000000"
-                />
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-            <AutoCompleteTextView
-                android:layout_width="0dp"
-                android:layout_weight="8"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="账号:"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    />
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_account"
+                    android:layout_width="0dp"
+                    android:layout_weight="8"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:hint="请输入账号"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:hint="请输入账号"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true"
-               />
-        </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="密码:"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:text="密码:"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="#000000"
-                />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_weight="8"
-                android:layout_height="wrap_content"
-                android:hint="@string/Passwordthint"
-                android:layout_marginRight="30dp"
-                android:imeActionId="6"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"/>
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/reg_password"
+                    android:layout_width="0dp"
+                    android:layout_weight="8"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Passwordthint"
+                    android:layout_marginRight="30dp"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,6 +138,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/reg_repassword"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
@@ -151,6 +154,7 @@
 
 
             <Button
+                android:id="@+id/reg_butto"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
