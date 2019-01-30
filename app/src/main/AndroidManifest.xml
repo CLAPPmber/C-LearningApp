@@ -20,15 +20,15 @@
         <!-- <activity -->
         <!-- android:name=".vedio" -->
         <!-- android:label="视频列表" /> -->
-        <!--<activity-->
-            <!--android:name=".PracticeActivity"-->
-            <!--android:label="教材同步试题" />-->
-        <!--<activity-->
-            <!--android:name=".BookActivity"-->
-            <!--android:label="相关书籍" />-->
-        <!--<activity-->
-            <!--android:name=".vedio"-->
-            <!--android:label="视频列表" />-->
+        <!-- <activity -->
+        <!-- android:name=".PracticeActivity" -->
+        <!-- android:label="教材同步试题" /> -->
+        <!-- <activity -->
+        <!-- android:name=".BookActivity" -->
+        <!-- android:label="相关书籍" /> -->
+        <!-- <activity -->
+        <!-- android:name=".vedio" -->
+        <!-- android:label="视频列表" /> -->
         <activity android:name="com.test.file.BookDetail" />
         <activity
             android:name="com.test.file.BookDirectory"
@@ -49,14 +49,20 @@
         <activity android:name=".ChangPasswordActivity" />
         <activity
             android:name=".HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".RegistActivity"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".RegistActivity" />
-        <activity android:name=".HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-
-        </activity>
+        <activity android:name=".RegistActivity" />
+        <activity
+            android:name=".HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ExerciseSystem" />
+        <activity android:name=".Practice" />
+        <activity android:name=".TestMenu" />
+        <activity android:name=".Practicing" />
+        <activity android:name=".CityDetails" />
+        <activity android:name=".CityHistory" />
+        <activity android:name=".WriteMessage" />
+        <activity android:name=".CitySystem"></activity>
     </application>
 
 </manifest>

@@ -147,22 +147,19 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
 		protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX,
 				int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
 
-			final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
-					scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
+				final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
+						scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
 
-			// Does all of the hard work...
-			OverscrollHelper.overScrollBy(PullToRefreshWebView.this, deltaX, scrollX, deltaY, scrollY,
-					getScrollRange(), OVERSCROLL_FUZZY_THRESHOLD, OVERSCROLL_SCALE_FACTOR, isTouchEvent);
+				// Does all of the hard work...
+				OverscrollHelper.overScrollBy(PullToRefreshWebView.this, deltaX, scrollX, deltaY, scrollY,
+						getScrollRange(), OVERSCROLL_FUZZY_THRESHOLD, OVERSCROLL_SCALE_FACTOR, isTouchEvent);
 
-			return returnValue;
+				return returnValue;
 		}
 
 		private int getScrollRange() {
-<<<<<<< HEAD
+
 			return (int) Math.max(0, Math.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale())
-=======
-			return (int) Math.max(0, FloatMath.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale())
->>>>>>> 0ea9675cef190d58dac373d889c401f1f0d91c9a
 					- (getHeight() - getPaddingBottom() - getPaddingTop()));
 		}
 	}

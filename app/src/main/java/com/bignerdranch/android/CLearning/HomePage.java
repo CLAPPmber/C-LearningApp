@@ -48,7 +48,7 @@ public class HomePage extends AppCompatActivity  implements BottomNavigationBar.
     private void initViewPager() {
         mList = new ArrayList<>();
         mList.add(new BookActivity());
-        mList.add(new PracticeActivity());
+        mList.add(new ExerciseSystem());
         mList.add(new CompileActivity());
         mList.add(new vedio_card());
         mList.add(new UserActivity());

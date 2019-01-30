@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_scrollFlags="scroll|enterAlways|snap"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C2DBDE"
+    tools:context="com.bignerdranch.android.CLearning.ExerciseSystem">
+
+    <TextView
+        android:id="@+id/exercise_name"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:gravity="center"
+        android:text="习题"/>
+
+    <Button
+        android:id="@+id/exercise_button_1"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="  课后习题"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:paddingLeft="13dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp"
+        android:drawableLeft="@drawable/exercise_book_pic"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/exercise_button_2"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="  试题训练"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:paddingLeft="13dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp"
+        android:drawableLeft="@drawable/exercise_test_pic"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/exercise_button_3"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="  社区答疑"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:paddingLeft="13dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp"
+        android:drawableLeft="@drawable/city_pic"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>
