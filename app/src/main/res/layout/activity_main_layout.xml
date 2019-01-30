@@ -70,47 +70,47 @@
             android:layout_marginBottom="360dp" />
     </RelativeLayout>
     <android.support.percent.PercentFrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="50dp"
-    android:layout_marginRight="50dp"
-    android:layout_marginTop="296sp"
-    android:layout_marginBottom="64sp"
-    >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="296sp"
+        android:layout_marginBottom="64sp"
+        >
 
-    <include layout="@layout/imgbutton2"
-             app:layout_heightPercent="45%"
-             app:layout_widthPercent="35%"
-             android:layout_gravity="right|top"
-             android:layout_marginRight="20dp"
-             android:layout_marginTop="10dp"
-             android:layout_width="80dp"
-             android:layout_height="82dp"/>
-    <include layout="@layout/imgbutton3"
-        android:layout_gravity="left|bottom"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="25dp"
-        app:layout_heightPercent="45%"
-        app:layout_widthPercent="35%"
-             android:layout_width="78dp"
-             android:layout_height="85dp"/>
-    <include layout="@layout/imgbutton4"
-             android:layout_gravity="right|bottom"
-             app:layout_heightPercent="45%"
-             app:layout_widthPercent="35%"
-             android:layout_marginRight="20dp"
-             android:layout_marginBottom="8dp"
-             android:layout_width="71dp"
-             android:layout_height="75dp"/>
+        <include layout="@layout/imgbutton2"
+            app:layout_heightPercent="45%"
+            app:layout_widthPercent="35%"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="80dp"
+            android:layout_height="82dp"/>
+        <include layout="@layout/imgbutton3"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="25dp"
+            app:layout_heightPercent="45%"
+            app:layout_widthPercent="35%"
+            android:layout_width="78dp"
+            android:layout_height="85dp"/>
+        <include layout="@layout/imgbutton4"
+            android:layout_gravity="right|bottom"
+            app:layout_heightPercent="45%"
+            app:layout_widthPercent="35%"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="71dp"
+            android:layout_height="75dp"/>
 
-    <include
-        layout="@layout/imgbutton"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        app:layout_heightPercent="45%"
-        app:layout_widthPercent="35%"
-        />
-</android.support.percent.PercentFrameLayout>
+        <include
+            layout="@layout/imgbutton"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            app:layout_heightPercent="45%"
+            app:layout_widthPercent="35%"
+            />
+    </android.support.percent.PercentFrameLayout>
 
 
     <TextView

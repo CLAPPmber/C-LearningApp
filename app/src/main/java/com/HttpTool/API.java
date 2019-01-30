@@ -7,4 +7,6 @@ public class API {
     public static final String Url_GetAllRec = "http://www.ish2b.cn/clapp/getallrec";
     public static final String Url_Prarecord = "http://www.ish2b.cn/clapp/prarecord";
     public static final String Url_Login = "http://www.ish2b.cn/clapp/login";
+    public static final String Url_Regist = "http://www.ish2b.cn/clapp/register";
+    public static final String Url_ChangePassword = "http://www.ish2b.cn/clapp/changepassword";
 }

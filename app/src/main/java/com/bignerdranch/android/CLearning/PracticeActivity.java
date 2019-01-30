@@ -51,6 +51,7 @@ public class PracticeActivity extends Fragment {
     private ACache acache;
     static String user;
     private View v;
+    private Context mContext;
     public PracticeActivity(){
         // Required empty public constructor
     }
@@ -61,6 +62,7 @@ public class PracticeActivity extends Fragment {
         super.onCreate(savedInstanceState);
         acache=ACache.get(this.getContext());//创建ACache组件
         user=acache.getAsString("Login");
+        mContext = getContext();
         v = inflater.inflate(R.layout.activity_practice,container,false);
         get_user_progress();                 //获取用户做题纪录（连网）
         importChapter();                     //添加章节信息
@@ -96,6 +98,11 @@ public class PracticeActivity extends Fragment {
             @Override
             public void onFailure(int code, String msg) {
                 //操作错误
+                if(code==404){
+                    Looper.prepare();
+                    Toast.makeText(mContext,"无法连接网络",Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                }
             }
         });
     }
