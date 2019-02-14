@@ -14,6 +14,11 @@ import com.Type.City_item;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Create by Fushicho on 2019/1/29
+ * 用于编写社区动态界面的RecyclerView评论部分
+ */
+
 public class CityItem extends RecyclerView.Adapter<CityItem.ViewHolder> {
 
     private List<City_item> mCityItem;                                  //社区动态存放链表

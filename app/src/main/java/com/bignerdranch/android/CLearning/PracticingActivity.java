@@ -31,6 +31,12 @@ import static com.bignerdranch.android.CLearning.MainLayout.getContext;
 import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
 import static com.bignerdranch.android.CLearning.PracticeActivity.user;
 
+/**
+ * Create by Fushicho on 2018/8/10
+ * app1.0版本习题系统做题界面
+ * app1.0以后版本废弃该活动,改用Practicing作为习题系统的做题界面
+ */
+
 public class PracticingActivity extends AppCompatActivity {
 
   private Button button_a;

@@ -19,6 +19,7 @@ import java.util.List;
  * Create by Fushicho on 2019/1/29
  * 用于编写社区动态详情页面的RecyclerView评论部分
  */
+
 public class CityCommandItem extends RecyclerView.Adapter<CityCommandItem.ViewHolder> {
 
     private List<City_Command_item> mCityCommandItem;                   //社区动态存放链表

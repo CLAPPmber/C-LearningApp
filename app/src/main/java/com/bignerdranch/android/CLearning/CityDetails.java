@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Create by Fushicho on 2019/1/29
+ * 社区动态详情界面
+ */
+
 public class CityDetails extends AppCompatActivity {
 
 

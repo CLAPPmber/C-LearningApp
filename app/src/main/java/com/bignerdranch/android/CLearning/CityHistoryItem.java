@@ -12,7 +12,10 @@ import com.Type.City_history_item;
 
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Create by Fushicho on 2019/1/29
+ * 用于编写社区历史记录界面的RecyclerView评论部分
+ */
 public class CityHistoryItem extends RecyclerView.Adapter<CityHistoryItem.ViewHolder> {
 
     private List<City_history_item> mCityHistoryItem;                   //社区动态存放链表

@@ -12,7 +12,7 @@ import android.widget.Button;
 
 /**
  * Create by Fushicho on 2019/1/24
- * 习题系统主页活动
+ * 习题系统活动主界面
  */
 
 import com.CacheTool.ACache;

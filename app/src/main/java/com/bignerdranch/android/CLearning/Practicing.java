@@ -44,6 +44,7 @@ import android.widget.TextView;
 /**
  * Create by Fushicho on 2019/1/24
  * 习题系统 - 做题界面
+ * 作为课后习题和试题训练的共同做题界面
  */
 
 

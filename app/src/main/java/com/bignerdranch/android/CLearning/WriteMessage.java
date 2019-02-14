@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+/**
+ * Create by Fushicho on 2019/1/29
+ * 社区发布动态界面
+ */
+
 public class WriteMessage extends AppCompatActivity {
 
     @Override
