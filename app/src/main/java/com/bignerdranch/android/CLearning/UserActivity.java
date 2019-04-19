@@ -26,6 +26,7 @@ import com.HttpTool.HttpUtil;
 import com.HttpTool.OnServerCallBack;
 import com.HttpTool.User;
 import com.ImgTool.RoundAngleImg;
+import com.Type.Retp_User_Progress;
 import com.Type.Retprorec;
 import com.google.gson.Gson;
 
@@ -33,6 +34,7 @@ import java.security.PublicKey;
 import java.util.List;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+import static java.lang.Integer.valueOf;
 
 public class UserActivity extends Fragment {
     private ACache acache;//缓存框架
@@ -44,6 +46,7 @@ public class UserActivity extends Fragment {
     private TextView userAccount;
     private TextView practiceProgress;
     private Integer dataSize = 0;
+    private Integer datatotal = 0;
 
     public UserActivity() { }
 
@@ -81,7 +84,7 @@ public class UserActivity extends Fragment {
         @Override
         public void onStart() {
             super.onStart();
-            practiceProgress.setText(dataSize + "/65");
+            practiceProgress.setText(dataSize + "/"+datatotal);
         }
 
         View.OnClickListener onclick = new View.OnClickListener() {
@@ -109,19 +112,17 @@ public class UserActivity extends Fragment {
          */
         public void getPracticeprogress() {
 
-            User user = new User(acache.getAsString("Login"));
+            String user = acache.getAsString("Login");
             dataSize = 0;
-            HttpUtil.sendOkHttpPostRequest(API.Url_GetAllRec, new Gson().toJson(user), new OnServerCallBack<FeedBack<List<Retprorec>>, List<Retprorec>>() {
+            datatotal= 0;
+            String URL=API.Url_Get_User_Progress + "?account=" + user;
+            HttpUtil.sendOkHttpGetRequest(URL, new OnServerCallBack<FeedBack<Retp_User_Progress>, Retp_User_Progress>() {
                 @Override
-                public void onSuccess(List<Retprorec> data) {//操作成功
-                    if(data == null){
-                        dataSize = 0;
-                        return;
-                    }
-                    for (int i = 0; i < data.size(); i++) {
-                        dataSize += data.get(i).chapter_rec;
-                    }
+                public void onSuccess(Retp_User_Progress data) {//操作成功
+                    dataSize=valueOf(data.getCompleted());
+                    datatotal=valueOf(data.getTotal());
                     acache.put(acache.getAsString("Login"),dataSize.toString()); //将进度存入缓存
+                    acache.put(acache.getAsString("Login"),datatotal.toString()); //将进度存入缓存
                     restart();
                 }
 
@@ -132,9 +133,11 @@ public class UserActivity extends Fragment {
                         Toast.makeText(mContext, "无法连接网络", Toast.LENGTH_LONG).show();
                         if(acache.getAsString(acache.getAsString("Login")) == null){
                             dataSize = 0;
+                            datatotal= 0;
                             return;
                         }
                         dataSize = Integer.parseInt(acache.getAsString(acache.getAsString("Login")));//网络出错，尝试从缓存中获取进度
+                        datatotal = Integer.parseInt(acache.getAsString(acache.getAsString("Login")));//网络出错，尝试从缓存中获取进度
                     }
                     Toast.makeText(mContext, msg, Toast.LENGTH_LONG).show();
                     Looper.loop();

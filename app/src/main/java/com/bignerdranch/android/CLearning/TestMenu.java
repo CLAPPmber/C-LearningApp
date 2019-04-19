@@ -22,7 +22,7 @@ import static com.bignerdranch.android.CLearning.Practice.chapter_data;
 
 /**
  *  Create by Fushicho on 2019/1/24
- *  用于编写试题训练界面的RecyclerView评论部分
+ *  用于编写试题训练界面的RecyclerView部分
  **/
 
 public class TestMenu extends RecyclerView.Adapter<TestMenu.ViewHolder> {

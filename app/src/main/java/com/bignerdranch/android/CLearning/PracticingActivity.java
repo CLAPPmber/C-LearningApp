@@ -94,7 +94,7 @@ public class PracticingActivity extends AppCompatActivity {
     test_option_c = (TextView) findViewById(R.id.option_c);
     test_option_d = (TextView) findViewById(R.id.option_d);
     test_ans = (TextView) findViewById(R.id.ans);
-    test_ana = (TextView) findViewById(R.id.ana);
+
     chapter_data.set_now_question(chapter_data.get_chapter_progress((chapter_data.get_now_chapter()))+1);
     update_question(chapter_data.get_now_chapter(),chapter_data.get_now_question());
   }

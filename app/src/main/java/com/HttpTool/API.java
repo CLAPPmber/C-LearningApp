@@ -9,4 +9,11 @@ public class API {
     public static final String Url_Login = "http://www.ish2b.cn/clapp/login";
     public static final String Url_Regist = "http://www.ish2b.cn/clapp/register";
     public static final String Url_ChangePassword = "http://www.ish2b.cn/clapp/changepassword";
+
+    public static final String Url_Get_User_Progress = "http://www.ish2b.cn/clapp/api/user/get_user_progress";
+    public static final String Url_Get_Chapter_Msg = "http://www.ish2b.cn/clapp/api/exersys/get_chapter_msg";
+    public static final String Url_Get_Progress = "http://www.ish2b.cn/clapp/api/exersys/get_progress";
+    public static final String Url_Get_Rec = "http://www.ish2b.cn/clapp/api/exersys/get_rec";
+    public static final String Url_Put_Doing_Ans = "http://www.ish2b.cn/clapp/api/exersys/put_doing_ans";
+    public static final String Url_Get_Test_Msg = "http://www.ish2b.cn/clapp/api/exersys/get_test_msg";
 }

@@ -180,6 +180,7 @@ public class MainLayout extends AppCompatActivity{
       }
       @Override
       public void onFailure(int code, String msg) {
+        Log.e("err",msg);
 
       }
     });
@@ -207,6 +208,8 @@ public class MainLayout extends AppCompatActivity{
       @Override
       public void onFailure(int code, String msg) {
         //操作错误
+        Log.e("err",msg);
+
       }
     });
   }

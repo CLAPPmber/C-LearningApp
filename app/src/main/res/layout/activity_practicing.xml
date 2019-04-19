@@ -223,6 +223,7 @@
             android:textSize="20sp"
             android:text="此处为答案的判断正误" />
     </LinearLayout>
+    <!--
     <LinearLayout
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
@@ -238,5 +239,5 @@
         android:textSize="20sp"
         android:text="此处解析" />
     </LinearLayout>
-
+-->
 </LinearLayout>

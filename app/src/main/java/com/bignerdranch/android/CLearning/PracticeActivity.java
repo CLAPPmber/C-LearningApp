@@ -102,6 +102,8 @@ public class PracticeActivity extends Fragment {
             @Override
             public void onFailure(int code, String msg) {
                 //操作错误
+                Log.e("err",msg);
+
                 if(code==404){
                     Looper.prepare();
                     Toast.makeText(mContext,"无法连接网络",Toast.LENGTH_SHORT).show();
