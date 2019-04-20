@@ -20,6 +20,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Create by Fushicho on 2019/1/29
+ * 社区系统主活动界面
+ */
+
 public class CitySystem extends AppCompatActivity {
 
     private List<City_item> mCityItemList= new ArrayList<>(); ;         //定义社区动态消息链表

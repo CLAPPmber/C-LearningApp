@@ -1,6 +1,10 @@
 package com.bignerdranch.android.CLearning;
 
-
+/**
+ * Create by Fushicho on 2018/8/10
+ * app1.0版本习题系统界面
+ * app1.0以后版本废弃该活动,改用Practice作为习题系统的子系统(课后习题)
+ */
 
 import android.content.Context;
 import android.database.Cursor;
@@ -98,6 +102,8 @@ public class PracticeActivity extends Fragment {
             @Override
             public void onFailure(int code, String msg) {
                 //操作错误
+                Log.e("err",msg);
+
                 if(code==404){
                     Looper.prepare();
                     Toast.makeText(mContext,"无法连接网络",Toast.LENGTH_SHORT).show();

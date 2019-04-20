@@ -31,6 +31,12 @@ import static com.bignerdranch.android.CLearning.MainLayout.getContext;
 import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
 import static com.bignerdranch.android.CLearning.PracticeActivity.user;
 
+/**
+ * Create by Fushicho on 2018/8/10
+ * app1.0版本习题系统做题界面
+ * app1.0以后版本废弃该活动,改用Practicing作为习题系统的做题界面
+ */
+
 public class PracticingActivity extends AppCompatActivity {
 
   private Button button_a;
@@ -88,7 +94,7 @@ public class PracticingActivity extends AppCompatActivity {
     test_option_c = (TextView) findViewById(R.id.option_c);
     test_option_d = (TextView) findViewById(R.id.option_d);
     test_ans = (TextView) findViewById(R.id.ans);
-    test_ana = (TextView) findViewById(R.id.ana);
+
     chapter_data.set_now_question(chapter_data.get_chapter_progress((chapter_data.get_now_chapter()))+1);
     update_question(chapter_data.get_now_chapter(),chapter_data.get_now_question());
   }

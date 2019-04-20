@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Create by Fushicho on 2019/1/29
+ * 社区个人历史记录界面
+ */
+
 public class CityHistory extends AppCompatActivity {
 
     private List<City_history_item> mCityItemList= new ArrayList<>();          //定义社区动态消息链表

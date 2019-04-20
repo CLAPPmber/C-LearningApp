@@ -19,6 +19,7 @@ import static com.bignerdranch.android.CLearning.PracticeActivity.chapter_data;
 
 /**
  * Created by Administrator on 2017\11\26 0026.
+ * 1.0版本使用,1.0后版本使用的是TestMenu
  */
 
 public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ViewHolder> {

@@ -13,4 +13,11 @@ public class API {
     public static final String Url_ChangeUserHeadImage = "http://www.ish2b.cn/clapp/api/change_user_head_image";
     public static final String Url_UploadImageFile = "http://www.ish2b.cn/clapp/api/upload_file";
     public static final String Url_DownLoadImageFile = "http://www.ish2b.cn/clapp/api/get_image/";
+
+    public static final String Url_Get_User_Progress = "http://www.ish2b.cn/clapp/api/user/get_user_progress";
+    public static final String Url_Get_Chapter_Msg = "http://www.ish2b.cn/clapp/api/exersys/get_chapter_msg";
+    public static final String Url_Get_Progress = "http://www.ish2b.cn/clapp/api/exersys/get_progress";
+    public static final String Url_Get_Rec = "http://www.ish2b.cn/clapp/api/exersys/get_rec";
+    public static final String Url_Put_Doing_Ans = "http://www.ish2b.cn/clapp/api/exersys/put_doing_ans";
+    public static final String Url_Get_Test_Msg = "http://www.ish2b.cn/clapp/api/exersys/get_test_msg";
 }

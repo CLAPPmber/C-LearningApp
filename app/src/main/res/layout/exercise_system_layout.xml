@@ -56,6 +56,7 @@
         android:layout_gravity="center"
         />
 
+    <!--
     <Button
         android:id="@+id/exercise_button_3"
         android:layout_marginTop="40dp"
@@ -72,6 +73,6 @@
         android:drawableLeft="@drawable/city_pic"
         android:layout_gravity="center"
         />
-
+    -->
 
 </LinearLayout>

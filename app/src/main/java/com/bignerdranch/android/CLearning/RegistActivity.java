@@ -121,11 +121,11 @@ public class RegistActivity extends AppCompatActivity {
                 Looper.prepare();
                 Toast toast =Toast.makeText(RegistActivity.this,"注册成功",Toast.LENGTH_SHORT);
                 toast.show();
+                aCache.put(BitMapTool.USserHeadImageCcachePRE+RegUser.account,UserHeadImageBitMap);
+                Back();
                 Looper.loop();
                 //设置进缓存和本地
-                aCache.put(BitMapTool.USserHeadImageCcachePRE+RegUser.account,UserHeadImageBitMap);
 //                BitMapTool.SaveImageToLocal(UserHeadImageBitMap,RegUser.account);
-                Back();
             }
 
             @Override

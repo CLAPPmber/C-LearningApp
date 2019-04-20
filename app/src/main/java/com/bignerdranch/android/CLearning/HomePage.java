@@ -49,7 +49,7 @@ public class HomePage extends AppCompatActivity  implements BottomNavigationBar.
         mList = new ArrayList<>();
         mList.add(new BookActivity());
         mList.add(new ExerciseSystem());
-        mList.add(new CompileActivity());
+//        mList.add(new CompileActivity());
         mList.add(new vedio_card());
         mList.add(new UserActivity());
 
@@ -103,7 +103,7 @@ public class HomePage extends AppCompatActivity  implements BottomNavigationBar.
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.ic_book, "书籍").setActiveColorResource(R.color.white))
                 .addItem(new BottomNavigationItem(R.drawable.ic_practice, "练习").setActiveColorResource(R.color.white))
-                .addItem(new BottomNavigationItem(R.drawable.ic_compile, "编译").setActiveColorResource(R.color.white))
+//                .addItem(new BottomNavigationItem(R.drawable.ic_compile, "编译").setActiveColorResource(R.color.white))
                 .addItem(new BottomNavigationItem(R.drawable.ic_video, "视频").setActiveColorResource(R.color.white))
                 .addItem(new BottomNavigationItem(R.drawable.ic_user,"用户").setActiveColorResource(R.color.white))
                 .setFirstSelectedPosition(0)
