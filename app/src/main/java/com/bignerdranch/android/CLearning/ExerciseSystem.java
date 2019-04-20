@@ -2,6 +2,7 @@ package com.bignerdranch.android.CLearning;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -151,9 +152,10 @@ public class ExerciseSystem extends Fragment {
             }
             @Override
             public void onFailure(int code, String msg) {//操作错误
+                Looper.prepare();
                 Log.e("err",msg);
                 Toast.makeText(getActivity(), "网络异常", Toast.LENGTH_SHORT).show();
-
+                Looper.loop();
             }
         });
 
@@ -182,6 +184,7 @@ public class ExerciseSystem extends Fragment {
                 @Override
                 public void onFailure(int code, String msg) {//操作错误
 //                    int a;
+                    Looper.prepare();
                     Log.e("err", msg);
                     Toast.makeText(getActivity(), "网络异常", Toast.LENGTH_SHORT).show();
                 }

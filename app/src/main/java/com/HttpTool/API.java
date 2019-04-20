@@ -20,4 +20,5 @@ public class API {
     public static final String Url_Get_Rec = "http://www.ish2b.cn/clapp/api/exersys/get_rec";
     public static final String Url_Put_Doing_Ans = "http://www.ish2b.cn/clapp/api/exersys/put_doing_ans";
     public static final String Url_Get_Test_Msg = "http://www.ish2b.cn/clapp/api/exersys/get_test_msg";
+    public static final String Url_Feed_Back = "http://www.ish2b.cn/clapp/api/feedback";
 }

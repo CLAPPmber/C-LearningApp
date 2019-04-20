@@ -67,6 +67,7 @@ public class UserActivity extends Fragment {
     private TextView modification_userImg;
     private Button button_modification;
     private Button button_quit;
+    private ImageView feedback_button;
     private Context mContext;
     private TextView userAccount;
     private TextView practiceProgress;
@@ -86,6 +87,7 @@ public class UserActivity extends Fragment {
             userHeadImg = v.findViewById(R.id.user_head_img);//用户头像
             practiceProgress = v.findViewById(R.id.practice_progress);
             modification_userImg = v.findViewById(R.id.modification_userImg);
+            feedback_button = v.findViewById(R.id.feedback_button);
             modification_userImg.getPaint().setAntiAlias(true);
             userAccount = v.findViewById(R.id.user_account);
             userHeadImg.setmOuterRing(0);
@@ -97,6 +99,7 @@ public class UserActivity extends Fragment {
             button_modification.setOnClickListener(onclick);
             modification_userImg.setOnClickListener(onclick);
             button_quit.setOnClickListener(onclick);
+            feedback_button.setOnClickListener(onclick);
             Account = acache.getAsString("Login");
             userAccount.setText(Account);
             SetuserHeadImg();
@@ -123,6 +126,9 @@ public class UserActivity extends Fragment {
                     case R.id.modification_userImg:
                         ChangeuserHeadImg();//修改用户头像
                         break;
+                    case R.id.feedback_button:
+                        SkipFeedBack();
+                        break;
                 }
             }
         };
@@ -130,7 +136,6 @@ public class UserActivity extends Fragment {
     private void skip() {
         Intent intent = new Intent(getActivity(), ChangPasswordActivity.class);
         startActivity(intent);
-        getActivity().finish();
     }
 
     /**
@@ -218,19 +223,19 @@ public class UserActivity extends Fragment {
     private void SetuserHeadImg(){
         userHeadImg.setBitmap(BitMapTool.GetDefaultHeadImageBitMap(this.getContext()));
        //尝试从缓存获取BitMap
-//        Bitmap bitmap;
-//        bitmap = acache.getAsBitmap(BitMapTool.USserHeadImageCcachePRE+Account);
-//        if (bitmap!=null){
-//            userHeadImg.setBitmap(bitmap);
-//            return;
-//        }
-//
-//        //尝试从本地文件获取
-//        bitmap = BitMapTool.GetLocalBitmap(Account);
-//        if (bitmap!=null){
-//            userHeadImg.setBitmap(bitmap);
-//            return;
-//        }
+        Bitmap bitmap;
+        bitmap = acache.getAsBitmap(BitMapTool.USserHeadImageCcachePRE+Account);
+        if (bitmap!=null){
+            userHeadImg.setBitmap(bitmap);
+            return;
+        }
+
+        //尝试从本地文件获取
+        bitmap = BitMapTool.GetLocalBitmap(Account);
+        if (bitmap!=null){
+            userHeadImg.setBitmap(bitmap);
+            return;
+        }
 
         //没有再从网络获取
         String Url = acache.getAsString("UserImageUrl");
@@ -382,5 +387,10 @@ public class UserActivity extends Fragment {
         }
     }
 
+    //跳转到反馈页面
+    private void SkipFeedBack(){
+        Intent intent=new Intent(this.getActivity(), com.bignerdranch.android.CLearning.FeedBack.class);
+        startActivity(intent);
+    }
 
 }
