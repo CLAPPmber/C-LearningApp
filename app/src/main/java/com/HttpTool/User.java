@@ -3,6 +3,7 @@ package com.HttpTool;
 public class User {
     public String account;
     public String password;
+    public String userhead;
 
     public User(String account, String password) {
         this.account = account;
@@ -28,5 +29,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getuserHeadImage() {
+        return userhead;
+    }
+
+    public void setuserHeadImage(String userHeadImage) {
+        this.userhead = userHeadImage;
     }
 }

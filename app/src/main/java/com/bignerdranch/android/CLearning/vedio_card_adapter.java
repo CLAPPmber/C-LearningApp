@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.CacheTool.ACache;
+import com.ImgTool.BitMapTool;
 import com.ImgTool.ImageUtils;
 import com.Type.VedioCard;
 
@@ -29,6 +31,7 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
     private Context mContext ;
     private List<VedioCard> mVedioCards;
     private Bitmap mBitmap;
+    private ACache aCache;
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView vedioimg;
@@ -49,6 +52,7 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
         if(mContext == null){
             mContext = parent.getContext();
         }
+        aCache = ACache.get(mContext);
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.vedio_card_item,parent,false);
         final ViewHolder holder = new ViewHolder(view);
@@ -69,15 +73,21 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         VedioCard vedioCard = mVedioCards.get(position);
         holder.Vname.setText(vedioCard.getVname());
-        ImageUtils.setImageBitmap(vedioCard.getImg(),holder.vedioimg,String.valueOf(position),mContext);
-//        GetImg getImg = new GetImg(vedioCard.getImg());
-//        getImg.start();
-//        try{
-//            getImg.join();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        holder.vedioimg.setImageBitmap(mBitmap);
+//        ImageUtils.setImageBitmap(vedioCard.getImg(),holder.vedioimg,String.valueOf(position),mContext);
+        GetImg getImg = new GetImg(vedioCard.getImg());
+        Bitmap getCacheBitmap = aCache.getAsBitmap(vedioCard.getImg());
+        if(getCacheBitmap!=null){
+            holder.vedioimg.setImageBitmap(getCacheBitmap);
+            return;
+        }
+        holder.vedioimg.setImageBitmap(BitMapTool.GetDefailtImageBitMap(mContext));
+        getImg.start();
+        try{
+            getImg.join();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        holder.vedioimg.setImageBitmap(mBitmap);
     }
 
     @Override
@@ -108,18 +118,13 @@ public class vedio_card_adapter extends RecyclerView.Adapter<vedio_card_adapter.
             conn.connect();
             InputStream is = conn.getInputStream();
             bitmap = BitmapFactory.decodeStream(is);
+            aCache.put(url,bitmap);
             is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return bitmap;
     }
-
-
     //保存文件到本地
-
-
-
-
 }
 

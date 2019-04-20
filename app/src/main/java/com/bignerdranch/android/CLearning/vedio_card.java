@@ -48,11 +48,6 @@ public class vedio_card extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-//        try{
-//            getcard.join();
-//        }catch (InterruptedException e){
-//            e.printStackTrace();
-//        }
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_video_card);
         GridLayoutManager layoutManager = new GridLayoutManager(this.getActivity(),1);
         recyclerView.setLayoutManager(layoutManager);

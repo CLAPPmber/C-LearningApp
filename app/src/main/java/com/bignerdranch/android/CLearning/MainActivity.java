@@ -1,5 +1,6 @@
 package com.bignerdranch.android.CLearning;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -136,4 +137,5 @@ public class MainActivity extends AppCompatActivity {
   public static Context getContext() {
     return mContext;
   }
+
 }

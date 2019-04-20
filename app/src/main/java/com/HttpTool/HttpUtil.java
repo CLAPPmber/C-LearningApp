@@ -4,6 +4,7 @@ package com.HttpTool;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -42,6 +44,20 @@ public class HttpUtil {
             .build();
     client.newCall(request).enqueue(mHttpCallbackListener);
   }
+
+  //上传图片文件到服务器
+  public static void sendOkHttpUploadImageFile(String url, File file ,final HttpCallBack httpCallBack){
+    mHttpCallbackListener = new HttpCallbackListener(httpCallBack);
+    OkHttpClient client = new OkHttpClient();
+    RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+            .addFormDataPart("file",file.getName(),RequestBody.create(MediaType.parse("multipart/form-data"),file)).build();
+    Request request = new Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build();
+    client.newCall(request).enqueue(mHttpCallbackListener);
+  }
+
 
   public static void getRequest(String url, Map<String, String> params, HttpCallBack callBack) {
     if (callBack == null) {
@@ -81,3 +97,5 @@ public class HttpUtil {
   }
 
 }
+
+

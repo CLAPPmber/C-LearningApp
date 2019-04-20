@@ -261,10 +261,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return password.length() > 4;
     }
 
-
-
-
-
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -425,30 +421,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             User use = new User(Account,Password); //查询的用户账号,密码随意
 
-            HttpUtil.sendOkHttpPostRequest(API.Url_Login,new Gson().toJson(use),new OnServerCallBack<FeedBack<String>,String>(){
+            HttpUtil.sendOkHttpPostRequest(API.Url_Login,new Gson().toJson(use),new OnServerCallBack<FeedBack<User>,User>(){
 
                 @Override
-                public void onSuccess(String data) {//操作成功
+                public void onSuccess(User data) {//操作成功
 
                     Looper.prepare();
 
                     Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
-
-                    editor=pref.edit();
-                    if(checkboxremember.isChecked()){
-                        //检查复选框是否被选中
-                        editor.putBoolean("checkbox_remember",true);
-                        editor.putString("account",account);
-                        editor.putString("password",password);
-                    }else {
-                        editor.clear();
-                    }
-                    editor.apply();
-
+                    //要获得用户的基本信息
                     Intent intent=new Intent(LoginActivity.this,HomePage.class);
-                    acache.put("Login",account,ACache.TIME_HOUR*6); //登录成功后将账号存储到缓存中，供全局使用,登录时间为6小时，过期将重新登录
+                    acache.put("Login",data.account); //登录成功后将账号存储到缓存中，供全局使用,登录时间为6小时，过期将重新登录
+                    acache.put("UserImageUrl",data.userhead);
                     startActivity(intent);
-
                     finish();
 
                     Looper.loop();
@@ -460,11 +445,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     Looper.prepare();
                     if (code == 501){
                         Toast.makeText(mContext, "账号或密码不正确", Toast.LENGTH_SHORT).show();
-                    }
-                    if (code == 502 ){
+                    }else if (code == 502 ){
                         Toast.makeText(mContext,"后端数据解析出错",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(mContext,"登录失败",Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(mContext,"登录失败",Toast.LENGTH_SHORT).show();
                     Looper.loop();
                 }
             });
