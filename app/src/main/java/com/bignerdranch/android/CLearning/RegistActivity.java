@@ -107,11 +107,6 @@ public class RegistActivity extends AppCompatActivity {
             return true;
         }
         Toast toast =Toast.makeText(RegistActivity.this,"两次输入密码不一致",Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        LinearLayout toastView = (LinearLayout) toast.getView();
-        ImageView imageCodeProject = new ImageView(getApplicationContext());
-        imageCodeProject.setImageResource(R.drawable.fail_chang_password);
-        toastView.addView(imageCodeProject, 0);
         toast.show();
         return false;
     }
