@@ -62,7 +62,8 @@
         <activity android:name=".CityDetails" />
         <activity android:name=".CityHistory" />
         <activity android:name=".WriteMessage" />
-        <activity android:name=".CitySystem"></activity>
+        <activity android:name=".CitySystem" />
+        <activity android:name=".FeedBack"></activity>
     </application>
 
 </manifest>

@@ -41,8 +41,6 @@ public class ChangPasswordActivity extends AppCompatActivity {
     cpback.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(ChangPasswordActivity.this, HomePage.class);
-        startActivity(intent);
         finish();
       }
     });
@@ -96,11 +94,6 @@ public class ChangPasswordActivity extends AppCompatActivity {
       public void onSuccess(String data) {
         Looper.prepare();
         Toast toast =Toast.makeText(ChangPasswordActivity.this,"修改密码成功",Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        LinearLayout toastView = (LinearLayout) toast.getView();
-        ImageView imageCodeProject = new ImageView(getApplicationContext());
-        imageCodeProject.setImageResource(R.drawable.succeed_chang_password);
-        toastView.addView(imageCodeProject, 0);
         toast.show();
         Looper.loop();
       }
