@@ -2,6 +2,7 @@ package com.bignerdranch.android.CLearning;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.CacheTool.ACache;
 import com.HttpTool.API;
@@ -46,7 +48,7 @@ public class Practice extends AppCompatActivity {
     private ACache acache;
     static  String user;
     private TextView tv;
-
+    static Handler handler;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,16 +74,59 @@ public class Practice extends AppCompatActivity {
         acache=ACache.get(Practice.this);
         user=acache.getAsString("Login");
 
-
+        set_test_progress(flag);               //联网获取用户做题记录
         //get_user_progress();                 //获取用户做题纪录（连网）
         //importChapter();                     //添加章节信息
-        update_Chapter_msg();                    //更新目录信息
+//        update_Chapter_msg();                  //更新目录信息
 
-        updata_adapter();                    //更新导入章节目录
+//        updata_adapter();                    //更新导入章节目录
 
+
+        handler = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                if (msg.what == 2) { //如果消息是刚才发送的标识
+                    update_Chapter_msg();                  //更新目录信息
+                    updata_adapter();                    //更新导入章节目录
+                }
+            };
+        };
     }
 
-
+    private void set_test_progress(int k){ //联网获取用户做题记录
+        if(k==0) {
+            String URL = API.Url_Get_Progress + "?account=" + user + "&flag=" + 0;
+            HttpUtil.sendOkHttpGetRequest(URL, new OnServerCallBack<FeedBack<List<Get_Progress>>, List<Get_Progress>>() {
+                @Override
+                public void onSuccess(List<Get_Progress> data) {//操作成功
+                    for (int i = 0; i < data.size(); i++)
+                        test0.setComplete(data.get(i).getTest_num(), data.get(i).getTest_complete_count());
+                    handler.sendEmptyMessage(2); //工作线程的handler发送消息
+                }
+                @Override
+                public void onFailure(int code, String msg) {//操作错误
+//                    int a;
+                    Log.e("err", msg);
+                    Toast.makeText(Practice.this, "网络异常", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else {
+            String URL1 = API.Url_Get_Progress + "?account=" + user + "&flag=" + 1;
+            HttpUtil.sendOkHttpGetRequest(URL1, new OnServerCallBack<FeedBack<List<Get_Progress>>, List<Get_Progress>>() {
+                @Override
+                public void onSuccess(List<Get_Progress> data) {//操作成功
+                    for (int i = 0; i < data.size(); i++)
+                        test1.setComplete(data.get(i).getTest_num(), data.get(i).getTest_complete_count());
+                    handler.sendEmptyMessage(2); //工作线程的handler发送消息
+                }
+                @Override
+                public void onFailure(int code, String msg) {//操作错误
+                    Log.e("err", msg);
+                    Toast.makeText(Practice.this, "网络异常", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
 
     // //更新目录信息

@@ -78,11 +78,11 @@ public class ExerciseSystem extends Fragment {
             @Override
             public void onClick(View v) {
                 flag = 0;
-                set_test_progress(0);   //用户做题进度更新
-                if(key0) {
+//                set_test_progress(0);   //用户做题进度更新
+//                if(key0) {
                     Intent intent = new Intent(getActivity(), Practice.class);
                     startActivity(intent);
-                }
+//                }
             }
         });
         //添加button2(试题训练),并设置图片的大小
@@ -94,11 +94,11 @@ public class ExerciseSystem extends Fragment {
             @Override
             public void onClick(View v) {
                 flag = 1;
-                set_test_progress(1);   //用户做题进度更新
-                if(key1) {
+//                set_test_progress(1);   //用户做题进度更新
+//                if(key1) {
                     Intent intent = new Intent(getActivity(), Practice.class);
                     startActivity(intent);
-                }
+//                }
             }
         });
         //添加button3(社区答疑),并设置图片的大小
@@ -154,8 +154,10 @@ public class ExerciseSystem extends Fragment {
             public void onFailure(int code, String msg) {//操作错误
                 Looper.prepare();
                 Log.e("err",msg);
-                Toast.makeText(getActivity(), "网络异常", Toast.LENGTH_SHORT).show();
-                Looper.loop();
+
+//                Toast.makeText(getActivity(), "网络异常", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 

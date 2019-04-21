@@ -46,7 +46,7 @@
             android:id="@+id/question_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:padding="20dp"
             android:textColor="#000000"
             android:text="此处是题目" />
@@ -68,8 +68,8 @@
             android:id="@+id/option_a_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textSize="25sp"
+            android:padding="12dp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:text="此处是选项A" />
     </LinearLayout>
@@ -91,10 +91,10 @@
             android:id="@+id/option_b_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="12dp"
             android:text="此处是选项B" />
     </LinearLayout>
 
@@ -116,9 +116,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000000"
-            android:padding="8dp"
+            android:padding="12dp"
             android:text="此处是选项C" />
     </LinearLayout>
 
@@ -140,9 +140,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000000"
-            android:padding="8dp"
+            android:padding="12dp"
             android:text="此处是选项D" />
     </LinearLayout>
 <!--

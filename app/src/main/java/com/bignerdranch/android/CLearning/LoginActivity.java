@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             String password=pref.getString("password","");
             mEmailView.setText(account);
             mPasswordView.setText(password);
-            checkboxremember.setChecked(true);
+        //    checkboxremember.setChecked(true);
         }
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
