@@ -262,7 +262,6 @@ public class Practicing extends AppCompatActivity {
     }
 
 
-
     //联网更新题目信息
     private void net_update_question(int chapter_num,int question_num){
         //todo 拿到之后应该是json格式的字符串,转为对于的类型然后直接先是就好.
@@ -272,12 +271,12 @@ public class Practicing extends AppCompatActivity {
       //  String datajson = acache.getAsString("pre:t1:q1");
         if(question_num>chapter_data.get_chapter_max_num(chapter_num))
             question_num--;//避免最后一题做完再次打开出现下一题的bug
-        question_name="题目加载中...";
+        question_name="";
         question_ans=1;
-        question_a="选项加载中...";
-        question_b="选项加载中...";
-        question_c="选项加载中...";
-        question_d="选项加载中...";
+        question_a="";
+        question_b="";
+        question_c="";
+        question_d="";
         test_question.setText(question_name);
         test_option_a.setText(question_a);
         test_option_b.setText(question_b);
@@ -320,7 +319,7 @@ public class Practicing extends AppCompatActivity {
         if(chapter_data.get_now_question()>chapter_data.get_chapter_max_num(chapter_data.get_now_chapter()))
             chapter_data.set_now_question(chapter_data.get_now_question()-1);
         test_num.setText(chapter_data.get_now_question()+"/"+chapter_data.get_chapter_max_num(chapter_data.get_now_chapter()));
-        set_test();
+     //   set_test();
 
 
 
@@ -352,16 +351,15 @@ public class Practicing extends AppCompatActivity {
                     Log.e("err",msg);
                 }
             });
-
-
-
-
-
         }
 //        else{
 ////            test_ans.setText(" ");
 //            test_ana.setText(" ");
 //        }
+    }
+
+    private void get_user_ans(){
+
     }
 
     private void work(){
